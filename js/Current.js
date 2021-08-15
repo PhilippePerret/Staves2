@@ -36,6 +36,8 @@ class CurrentClass {
 
   get isModePhrase(){return !!this._mode_insert_phrase}
 
+get modePortees(){return this._mode_portees || 0}
+
 /**
  * Pour passer au "snap" suivant du décalage +left+
  * 
@@ -56,7 +58,28 @@ changeNoteDuree(){
   this._note_duree_is_ronde = !this._note_duree_is_ronde
   UI.btnNoteDuree.innerHTML = this._note_duree_is_ronde ? 'ronde' : 'noire'
 }
+changeModePortees(){
+  this._mode_portees = this._mode_portees || 0
+  this._mode_portees = (this._mode_portees + 1) % 3
+  this.setModePortees()
+}
 
+setModePortees(){
+  UI.bntModePortees.innerHTML = ['solo','duo','piano'][this.modePortees]
+  console.log("this.modePortees = ", this.modePortees)
+  page.portee1.setFond()
+  switch(this.modePortees){
+    case 0:
+      page.portee2.unsetFond()
+      break
+    case 1:
+      page.portee2.setFond().setKeyTo(SOL)
+      break
+    case 2:
+      page.portee2.setFond().setKeyTo(FA)
+      break
+  }
+}
 
 
 visualizeNextSnap(){

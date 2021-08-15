@@ -15,9 +15,11 @@ class UIClass {
 observeBoutonsModes(){
   this.btnModeInsert  = document.querySelector('button#note-insert-mode')
   this.btnNoteDuree   = document.querySelector('button#note-duree')
+  this.bntModePortees = document.querySelector('button#mode-portees')
 
   this.btnModeInsert.addEventListener('click', Current.changeModeInsert.bind(Current))
   this.btnNoteDuree.addEventListener('click', Current.changeNoteDuree.bind(Current))
+  this.bntModePortees.addEventListener('click', Current.changeModePortees.bind(Current))
 }
 
 }//class UIClass

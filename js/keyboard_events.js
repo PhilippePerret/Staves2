@@ -56,11 +56,23 @@ window.onkeyup = function(e) {
       break
 
     case 'ArrowLeft':
-      Snap.previous(e)
+      if ( e.altKey ) {
+        Snap.previous(e)
+      } else if ( e.shiftKey ) {
+        console.log("Je déplace la note courante au précédent SNAP")
+      } else {
+        console.log("Je sélectionne la note précédente")
+      }
       break
 
     case 'ArrowRight':
-      Snap.next(e)
+      if ( e.altKey ) {
+        Snap.next(e)
+      } else if ( e.shiftKey ) {
+        console.log("Je déplace la note courante au prochain SNAP")
+      } else {
+        console.log("Je sélectionne la note suivante (if any)")
+      }
       break
 
     default:

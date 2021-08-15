@@ -1,11 +1,18 @@
 div.portee {
   position:  relative;
   background-color: #eee;
-  background-image: url('../img/lignes.jpg');
-  background-repeat:  repeat-x;
+  /*background-image: url('../img/lignes.jpg');*/
+/*  background-repeat:  repeat-x;
   background-clip:  content-box;
-  background-position:  0px 70px; /* 2e = hauteur */
+*/  /*background-position:  0px 70px; /* 2e = hauteur */*/
   height:  460px;
+  position: relative;
+}
+div.portee img.lignes {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  z-index: 0;
 }
 img.G-key {
   height:  360px;

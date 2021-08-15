@@ -64,6 +64,18 @@ get bottom(){
   return this.backgroundPosition + 4 * INTERLIGNE
 }
  
+setFond(){
+  if ( !this.obj.querySelector('.lignes') ){
+    var i = DCreate('IMG', {src:'img/lignes.jpg', class:'lignes'})
+    this.obj.appendChild(i)
+  }
+  return this
+}
+unsetFond(){
+  this.obj.querySelector('.lignes').remove()
+  return this
+}
+
 /**
  * Règle la position des lignes (qui peut varier s'il y a beaucoup
  * de notes supplémentaires au-dessus)
