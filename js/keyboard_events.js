@@ -36,6 +36,13 @@ window.onkeypress = function(e) {
       break
 
 
+    case 'p':
+      /**
+       * Changement du mode de portée (solo/piano/duo)
+       */
+       Current.changeModePortees.call(Current)
+       break
+
     default:
       console.info("KEY-PRESS e.key = ", e.key)
   }
@@ -48,11 +55,11 @@ window.onkeyup = function(e) {
   switch(e.key){
     
     case 'ArrowDown':
-      Current.note.down(e)
+      Current.note && Current.note.down(e)
       break
     
     case 'ArrowUp':
-      Current.note.up(e)
+      Current.note && Current.note.up(e)
       break
 
     case 'ArrowLeft':

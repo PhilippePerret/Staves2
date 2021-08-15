@@ -7,6 +7,7 @@ class Page {
    */
   addPortees(){
     this.portee1 = this.addPortee()
+    this.portee1.setKeyTo(SOL)
     Current.portee = this.portee1
     this.portee2 = this.addPortee()
     Current.setModePortees()

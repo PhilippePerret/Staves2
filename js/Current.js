@@ -65,18 +65,20 @@ changeModePortees(){
 }
 
 setModePortees(){
-  UI.bntModePortees.innerHTML = ['solo','duo','piano'][this.modePortees]
-  console.log("this.modePortees = ", this.modePortees)
+  UI.bntModePortees.innerHTML = ['solo','piano','duo'][this.modePortees]
   page.portee1.setFond()
   switch(this.modePortees){
     case 0:
       page.portee2.unsetFond()
+      Current.updateSnapVisualor(240)
       break
     case 1:
-      page.portee2.setFond().setKeyTo(SOL)
+      page.portee2.setFond().setKeyTo(FA)
+      Current.updateSnapVisualor(610)
       break
     case 2:
-      page.portee2.setFond().setKeyTo(FA)
+      page.portee2.setFond().setKeyTo(SOL)
+      Current.updateSnapVisualor(240)
       break
   }
 }
@@ -92,6 +94,12 @@ visualizeNextSnap(){
   this.snapVisualisor.style.left  = px(this.nextSnap + NOTE_OFFSET + 40)
 }
 
+/**
+ * Pour adapter la taille (hauteur) du visualiseur de Snap
+ */
+updateSnapVisualor(height){
+  this.snapVisualisor && (this.snapVisualisor.style.height = px(height))
+}
 
 }// class Current
 

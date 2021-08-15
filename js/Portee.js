@@ -33,24 +33,27 @@ buildNote(params){
     this.obj.style.backgroundPosition = `0 ${px(this.top)}`
   }
 
-  /**
-   * Construire la portée
-   */
-  build(){
-    this.obj = document.createElement('DIV')
-    this.obj.className = 'portee'
-    this.setKeyTo(SOL)
-    this.page.obj.appendChild(this.obj)
-  }
+/**
+ * Construire la portée
+ */
+build(){
+  this.obj = document.createElement('DIV')
+  this.obj.className = 'portee'
+  this.page.obj.appendChild(this.obj)
+}
 
 
-  /**
-   * Pour changer de clé
-   */
-  setKeyTo(key){
-    var img = DCreate('IMG', {src: `img/key-${key}.svg`, class:`${key}-key`})
-    this.obj.appendChild(img)
-  }
+/**
+ * Pour changer de clé
+ */
+setKeyTo(key){
+  this.removeKey()
+  var img = DCreate('IMG', {src: `img/key-${key}.svg`, class:`${key}-key key`})
+  this.obj.appendChild(img)
+}
+removeKey(){
+  this.obj.querySelector('.key') && this.obj.querySelector('.key').remove()
+}
 
 /**
  * La position de la portée dans le div permet de définir la hauteur
@@ -72,7 +75,8 @@ setFond(){
   return this
 }
 unsetFond(){
-  this.obj.querySelector('.lignes').remove()
+  this.removeKey()
+  this.obj.querySelector('.lignes') && this.obj.querySelector('.lignes').remove()
   return this
 }
 

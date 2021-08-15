@@ -1,6 +1,6 @@
 div.portee {
   position:  relative;
-  background-color: #eee;
+  /*background-color: #eee;*/
   /*background-image: url('../img/lignes.jpg');*/
 /*  background-repeat:  repeat-x;
   background-clip:  content-box;
@@ -12,13 +12,17 @@ div.portee img.lignes {
   position: absolute;
   top: 70px;
   left: 0;
-  z-index: 0;
+  z-index: -1;
 }
 img.G-key {
   height:  360px;
   margin-left: 20px;
+  z-index: 1;
 }
 img.F-key {
-  height:  200px;
+  position: absolute;
+  height:  153px;
   margin-left: 20px;
+  top: 80px;
+  z-index: 1;
 }
