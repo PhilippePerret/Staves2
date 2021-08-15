@@ -88,16 +88,17 @@ visualizeNextSnap(){
     document.body.appendChild(obj)
     this.snapVisualisor = obj
   }
-  this.snapVisualisor.style.top   = px(this.portee.top)
+  this.snapVisualisor.style.top   = px(this.snapVisualisorTop || 72)
   this.snapVisualisor.style.left  = px(this.nextSnap + NOTE_OFFSET + 40)
 }
 
 /**
  * Pour adapter la taille (hauteur) du visualiseur de Snap
  */
-updateSnapVisualor(height){
+updateSnapVisualor(top){
   if (this.snapVisualisor) {
-    this.snapVisualisor.style.top = px(height)
+    this.snapVisualisorTop = top
+    this.snapVisualisor.style.top = px(top)
   }
 }
 
