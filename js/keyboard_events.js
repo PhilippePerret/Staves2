@@ -68,7 +68,8 @@ window.onkeyup = function(e) {
       } else if ( e.shiftKey ) {
         console.log("Je déplace la note courante au précédent SNAP")
       } else {
-        console.log("Je sélectionne la note précédente")
+        if (Notes.pointer > 0) Current.note = Notes.goPrevious()
+        else console.info("C'est la première note.")
       }
       break
 
@@ -78,11 +79,29 @@ window.onkeyup = function(e) {
       } else if ( e.shiftKey ) {
         console.log("Je déplace la note courante au prochain SNAP")
       } else {
-        console.log("Je sélectionne la note suivante (if any)")
+        if (Notes.pointer < Notes.lastIndex) Current.note = Notes.goNext()
+        else console.info("C'est la dernière note.")
       }
       break
 
+    case 'Backspace':
+      Notes.destroyCurrent()
+      return stopEvent(e)
+
+    case 'Home':
+      /**
+       * Pour changer de portée active
+       */
+      page.selectPortee(1)
+      return stopEvent(e)
+    case 'End':
+      /**
+       * Pour sélectionner la portée inférieure
+       */
+      page.selectPortee(2)
+      return stopEvent(e)
+
     default:
-      // console.info("KEY-UP e.key",e.key )
+      console.info("KEY-UP e.key",e.key )
   }
 }

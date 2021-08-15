@@ -24,7 +24,7 @@ class CurrentClass {
   }
 
   // Note courante (instance Note)
-  get note(){return this._note}
+  get note() { return Notes.current }
   set note(n){
     if ( this._note ) this._note.unsetSelected()
     this._note = n
@@ -67,18 +67,16 @@ changeModePortees(){
 setModePortees(){
   UI.bntModePortees.innerHTML = ['solo','piano','duo'][this.modePortees]
   page.portee1.setFond()
+  page.portee2.isVisible = this.modePortees != 0
   switch(this.modePortees){
     case 0:
       page.portee2.unsetFond()
-      Current.updateSnapVisualor(240)
       break
     case 1:
       page.portee2.setFond().setKeyTo(FA)
-      Current.updateSnapVisualor(610)
       break
     case 2:
       page.portee2.setFond().setKeyTo(SOL)
-      Current.updateSnapVisualor(240)
       break
   }
 }
@@ -98,7 +96,9 @@ visualizeNextSnap(){
  * Pour adapter la taille (hauteur) du visualiseur de Snap
  */
 updateSnapVisualor(height){
-  this.snapVisualisor && (this.snapVisualisor.style.height = px(height))
+  if (this.snapVisualisor) {
+    this.snapVisualisor.style.top = px(height)
+  }
 }
 
 }// class Current

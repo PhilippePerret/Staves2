@@ -124,6 +124,17 @@ build(){
   this.obj = img
   this.portee.add(this.obj)
   this.update()
+  Notes.add(this)
+}
+
+/**
+ * Détruit complètement la note
+ * 
+ */
+destroy(){
+  this.obj.remove()
+  this.removeLignesSup()
+  this.removeAlteration()
 }
 
 /**
@@ -149,9 +160,9 @@ graveLignesSup(){
     // Lignes supplémentaires en dessous
     // 
     var topls = this.portee.bottom + 5
-    while (topls < this.top ) {
+    while (topls < this.top - 4 ) {
       topls += INTERLIGNE
-      var img = DCreate('IMG', {src:'img/ligne-sup.svg', class:'ligne-sup'})
+      var img = DCreate('IMG', {src:'img/ligne-sup.svg', class:`ligne-sup ${this.type}`})
       img.style.left = px(this.ligneSupLeft)
       img.style.top  = px(topls)
       this.lignesSup.push(img)
@@ -163,8 +174,10 @@ graveLignesSup(){
  * Détruit les lignes supplémentaires
  */
 removeLignesSup(){
-  this.lignesSup.forEach(l => l.remove())
-  this.lignesSup = null
+  if ( this.lignesSup ) {
+    this.lignesSup.forEach(l => l.remove())
+    this.lignesSup = null
+  }
 }
 
 
@@ -204,10 +217,11 @@ get alterationLeft(){
 }
 
 removeAlteration(){
-  this.objAlteration.remove()
-  this.objAlteration = null
+  if ( this.objAlteration ) {
+    this.objAlteration.remove()
+    this.objAlteration = null    
+  }
 }
-
 
 get left(){ return this._left }
 set left(l){this._left = l}
@@ -229,14 +243,26 @@ get rectifiedTop(){
  * 
  */
 get naturalTop(){
-  switch(this.note){
-    case 'b' : return TOP_FA - 3 * NOTE_ECART
-    case 'a' : return TOP_FA - 2 * NOTE_ECART
-    case 'g' : return TOP_FA - 1 * NOTE_ECART
-    case 'f' : return TOP_FA
-    case 'e' : return TOP_FA + 1 * NOTE_ECART
-    case 'd' : return TOP_FA + 2 * NOTE_ECART
-    case 'c' : return TOP_FA + 3 * NOTE_ECART
+  if ( this.portee.key == FA ) {
+    switch(this.note){
+    case 'b' : return TOP_FA - 8 * NOTE_ECART
+    case 'a' : return TOP_FA - 7 * NOTE_ECART
+    case 'g' : return TOP_FA - 6 * NOTE_ECART
+    case 'f' : return TOP_FA - 5 * NOTE_ECART
+    case 'e' : return TOP_FA - 4 * NOTE_ECART
+    case 'd' : return TOP_FA - 3 * NOTE_ECART
+    case 'c' : return TOP_FA - 2 * NOTE_ECART
+    } 
+  } else {
+    switch(this.note){
+      case 'b' : return TOP_FA - 3 * NOTE_ECART
+      case 'a' : return TOP_FA - 2 * NOTE_ECART
+      case 'g' : return TOP_FA - 1 * NOTE_ECART
+      case 'f' : return TOP_FA
+      case 'e' : return TOP_FA + 1 * NOTE_ECART
+      case 'd' : return TOP_FA + 2 * NOTE_ECART
+      case 'c' : return TOP_FA + 3 * NOTE_ECART
+    }    
   }
 }
 

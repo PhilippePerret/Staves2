@@ -18,7 +18,7 @@ add(o){ this.obj.appendChild(o) }
  */
 buildNote(params){
   var n = new Note({type:'noire', portee: this, note: params.note, octave: 3})
-  n.build()
+  n.build() // l'ajoute à Notes.items
   this.notes || (this.notes = [])
   this.notes.push(n)
   Current.note = n
@@ -47,6 +47,7 @@ build(){
  * Pour changer de clé
  */
 setKeyTo(key){
+  this.key = key
   this.removeKey()
   var img = DCreate('IMG', {src: `img/key-${key}.svg`, class:`${key}-key key`})
   this.obj.appendChild(img)
@@ -63,6 +64,8 @@ removeKey(){
 get top(){
   return this.backgroundPosition
 }
+setTop(v){this.obj.style.top = px(v)}
+
 get bottom(){
   return this.backgroundPosition + 4 * INTERLIGNE
 }

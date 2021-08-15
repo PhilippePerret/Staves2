@@ -8,11 +8,15 @@ img.note.ronde {
   height:   51px;
 }
 img.note.selected {
-  background-color: #EEF;
+  background-color: rgba(0,99,255,0.15);
 }
 img.ligne-sup {
   position: absolute;
   height:  6pt;
+}
+img.ligne-sup.ronde {
+  scale: 1.2;
+  margin-left: 12px;
 }
 img.alteration {
   position: absolute;
