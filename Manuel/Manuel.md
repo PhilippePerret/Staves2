@@ -26,7 +26,7 @@ On peut remonter ou redescendre la note d’une octave en ajoutant la touche MAJ
 | ------------------------------------------------------------ | --------- | -------------------------- |
 | Bascule entre le mode “Accord” et le mode “Phrase”           | m         | Détermine le mode d’entrée |
 | Bascule entre “noire” et “ronde” pour la prochaine note à insérer | n         |                            |
-|                                                              |           |                            |
+| Déplacer le prochain “snap”                                  | ← →       |                            |
 |                                                              |           |                            |
 |                                                              |           |                            |
 |                                                              |           |                            |

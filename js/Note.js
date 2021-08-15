@@ -91,8 +91,11 @@ update(){
   this.obj.style.left = px(this.noteLeft)
   this.graveAlteration()
   this.graveLignesSup()
-  Current.isModePhrase && Current.setNextSnap(this.noteLeft)
+  Current.isModePhrase && Current.setNextSnap(this.left)
 }
+
+setSelected()   {this.obj.classList.add('selected')}
+unsetSelected() {this.obj.classList.remove('selected')}
 
 
 /**

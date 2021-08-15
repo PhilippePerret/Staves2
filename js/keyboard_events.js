@@ -46,12 +46,23 @@ window.onkeydown = function(e) {
 }
 window.onkeyup = function(e) {
   switch(e.key){
+    
     case 'ArrowDown':
       Current.note.down(e)
       break
+    
     case 'ArrowUp':
       Current.note.up(e)
       break
+
+    case 'ArrowLeft':
+      Snap.previous(e)
+      break
+
+    case 'ArrowRight':
+      Snap.next(e)
+      break
+
     default:
       // console.info("KEY-UP e.key",e.key )
   }
