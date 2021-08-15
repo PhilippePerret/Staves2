@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Staves</title>
+  <link rel="stylesheet" type="text/css" href="css/ui.css" />
+  <link rel="stylesheet" type="text/css" href="css/page.css" />
+  <link rel="stylesheet" type="text/css" href="css/portee.css" />
+  <link rel="stylesheet" type="text/css" href="css/notes.css" />
+</head>
+<body>
+
+
+<section id="page"></section>
+<footer>
+  <button id="note-insert-mode" class="mode" title="Mode d'insertion des notes, soit en accord (entrée verticale), soit en mélodie (entrée horizontale) [m]">mode accord</button>
+  <button id="note-duree" class="mode" title="« Couleur » de la note qui sera insérée [n]">noire</button>
+</footer>
+
+<!-- NON DIFFÉRÉ -->
+<script type="text/javascript" src="js/constants.js"></script>
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript" src="js/Handies.js"></script>
+<script type="text/javascript" src="js/Page.js"></script>
+<script type="text/javascript" src="js/UI.js"></script>
+
+<!-- DIFFÉRÉ -->
+<script type="text/javascript" src="js/main.js" defer></script>
+<script type="text/javascript" src="js/keyboard_events.js" defer></script>
+<script type="text/javascript" src="js/Portee.js" defer></script>
+<script type="text/javascript" src="js/Current.js" defer></script>
+<script type="text/javascript" src="js/Note.js" defer></script>
+</body>
+</html>

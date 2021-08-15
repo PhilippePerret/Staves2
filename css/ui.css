@@ -1,0 +1,12 @@
+footer {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background-color: #BBB;
+  bottom: 0;
+}
+footer button.mode {
+  width: 180px;
+  font-variant: all-small-caps;
+  font-size: 1.2em;
+}

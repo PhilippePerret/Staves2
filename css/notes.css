@@ -1,0 +1,20 @@
+img.note {
+  position: absolute;
+}
+img.note.noire {
+  height:   62px;
+}
+img.note.ronde {
+  height:   51px;
+}
+img.note.selected {
+  background-color: #EEF;
+}
+img.ligne-sup {
+  position: absolute;
+  height:  6pt;
+}
+img.alteration {
+  position: absolute;
+  height: 120px;
+}

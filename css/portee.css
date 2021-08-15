@@ -1,0 +1,17 @@
+div.portee {
+  position:  relative;
+  background-color: #eee;
+  background-image: url('../img/lignes.jpg');
+  background-repeat:  repeat-x;
+  background-clip:  content-box;
+  background-position:  0px 70px; /* 2e = hauteur */
+  height:  460px;
+}
+img.G-key {
+  height:  360px;
+  margin-left: 20px;
+}
+img.F-key {
+  height:  200px;
+  margin-left: 20px;
+}
