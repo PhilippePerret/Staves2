@@ -2,7 +2,7 @@ div.portee {
   position:   fixed;
   height:     620px;
   width:      4000px;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
   overflow-y: visible;
 }
 div.portee img.lignes {

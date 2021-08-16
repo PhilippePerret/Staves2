@@ -154,23 +154,37 @@ graveLignesSup(){
   if ( this.top >= this.portee.top && this.top < this.portee.bottom + NOTE_ECART ) return
   // Sinon, il faut construire les lignes supplémentaires
   this.lignesSup = []
+  var topls ;
   if ( this.top < this.portee.top ) {
     // Lignes supplémentaires au-dessus
+    topls = this.portee.top + 5
+    while (topls > this.top + INTERLIGNE ) {
+      topls -= INTERLIGNE
+      this.createLigneSup(topls)
+    }
   } else {
     // 
     // Lignes supplémentaires en dessous
     // 
-    var topls = this.portee.bottom + 5
+    topls = this.portee.bottom + 5
     while (topls < this.top - 4 ) {
       topls += INTERLIGNE
-      var img = DCreate('IMG', {src:'img/ligne-sup.svg', class:`ligne-sup ${this.type}`})
-      img.style.left = px(this.ligneSupLeft)
-      img.style.top  = px(topls)
-      this.lignesSup.push(img)
-      this.portee.add(img)
+      this.createLigneSup(topls)
     }
   }
 }
+
+/**
+ * Crée la ligne supplémentaire
+ */
+createLigneSup(top){
+  var img = DCreate('IMG', {src:'img/ligne-sup.svg', class:`ligne-sup ${this.type}`})
+  img.style.left = px(this.ligneSupLeft)
+  img.style.top  = px(top)
+  this.lignesSup.push(img)
+  this.portee.add(img)
+}
+
 /**
  * Détruit les lignes supplémentaires
  */
