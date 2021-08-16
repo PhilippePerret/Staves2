@@ -63,6 +63,15 @@ changeModePortees(){
   this._mode_portees = (this._mode_portees + 1) % 3
   this.setModePortees()
 }
+changeModeSelecti(sans_marque){
+  if (undefined == sans_marque) {
+    this._mode_sans_marques = !this._mode_sans_marques
+  } else {
+    this._mode_sans_marques = sans_marque
+  }
+  UI.bntModeSelecti.innerHTML = this._mode_sans_marques ? 'clean' : 'marques'
+  this.setModeSansMarques(this._mode_sans_marques)
+}
 
 setModePortees(){
   UI.bntModePortees.innerHTML = ['solo','piano','duo'][this.modePortees]
@@ -79,6 +88,11 @@ setModePortees(){
       page.portee2.setFond().setKeyTo(SOL)
       break
   }
+}
+
+setModeSansMarques(sans_marque){
+  Current.note && Current.note[sans_marque ? 'unsetSelected':'setSelected']()
+  this.snapVisualisor.style.visibility = sans_marque ? 'hidden' : 'visible'
 }
 
 

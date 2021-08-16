@@ -3,6 +3,7 @@ window.onkeypress = function(e) {
   switch(e.key){
     case 'c': case 'd': case 'e': case 'f': case 'g': case 'a': case 'b' :
       Current.portee.buildNote({note: e.key})
+      Current.changeModeSelecti(false) // on fait toujours ré-apparaitre les marques
       break
 
     case '=': // Plus
@@ -43,6 +44,13 @@ window.onkeypress = function(e) {
        * Changement du mode de portée (solo/piano/duo)
        */
        Current.changeModePortees.call(Current)
+       break
+
+    case 's':
+      /**
+       * Changement du mode de sélection (marqueurs/clean)
+       */
+       Current.changeModeSelecti.call(Current)
        break
 
     default:
