@@ -17,7 +17,7 @@ add(o){ this.obj.appendChild(o) }
  *    note:     La note (a-g)
  */
 buildNote(params){
-  var n = new Note({type:'noire', portee: this, note: params.note, octave: 3})
+  var n = new Note({portee: this, note: params.note, octave: 3})
   n.build() // l'ajoute à Notes.items
   this.notes || (this.notes = [])
   this.notes.push(n)

@@ -76,7 +76,7 @@ window.onkeyup = function(e) {
       if ( e.altKey ) {
         Snap.previous(e)
       } else if ( e.shiftKey ) {
-        console.log("Je déplace la note courante au précédent SNAP")
+        Current.note && Current.note.moveToPrevSnap(e)
       } else {
         if (Notes.pointer > 0) Current.note = Notes.goPrevious()
         else console.info("C'est la première note.")
@@ -87,7 +87,7 @@ window.onkeyup = function(e) {
       if ( e.altKey ) {
         Snap.next(e)
       } else if ( e.shiftKey ) {
-        console.log("Je déplace la note courante au prochain SNAP")
+        Current.note && Current.note.moveToNextSnap(e)
       } else {
         if (Notes.pointer < Notes.lastIndex) Current.note = Notes.goNext()
         else console.info("C'est la dernière note.")
@@ -112,6 +112,6 @@ window.onkeyup = function(e) {
       return stopEvent(e)
 
     default:
-      console.info("KEY-UP e.key",e.key )
+      // console.info("KEY-UP e.key",e.key )
   }
 }

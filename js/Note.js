@@ -76,6 +76,16 @@ getNoteDown(){
   this.note = 'bcdefga'.substring(idx, idx + 1)
 }
 
+
+moveToNextSnap(e){
+  if ( this.left == Current.snap) Snap.next(e)
+  this.update()
+}
+moveToPrevSnap(e){
+  if ( this.left == Current.snap) Snap.previous(e)
+  this.update()
+}
+
 get indexNote(){
   return 'cdefgab'.indexOf(this.note)
 }
@@ -85,6 +95,7 @@ get indexNote(){
  * 
  */
 update(){
+  this.left = Current.snap
   this._top           = null
   this._ligsupleft    = null
   this._alterwidth    = null
@@ -120,7 +131,7 @@ get ligneSupLeft(){
  * 
  */
 build(){
-  this.left = Current.snap
+  // this.left = Current.snap
   let img = DCreate('IMG', {src: `img/note-${this.type}.svg`, class:`note ${this.type}`})
   this.obj = img
   this.portee.add(this.obj)
@@ -144,13 +155,6 @@ destroy(){
  */
 graveLignesSup(){
   this.lignesSup && this.removeLignesSup()
-  // Pas de lignes supplémentaires si la note se trouve dans la
-  // portée
-  // console.info({
-  //   top: this.top,
-  //   portee_top: this.portee.top,
-  //   portee_bottom: this.portee.bottom
-  // })
   if ( this.top >= this.portee.top && this.top < this.portee.bottom + NOTE_ECART ) return
   // Sinon, il faut construire les lignes supplémentaires
   this.lignesSup = []
