@@ -57,7 +57,8 @@ diesize(){        this.setAlteration('diese')}
 doubleDiesize(){  this.setAlteration('double-diese')}
 bemolize(){       this.setAlteration('bemol')}
 doubleBemolize(){ this.setAlteration('double-bemol')}
-becarrize(){      this.setAlteration(null)}
+becarrize(){      this.setAlteration('becarre')}
+noAlterize(){     this.setAlteration(null)}
 
 setAlteration(name){
   this.alteration = name

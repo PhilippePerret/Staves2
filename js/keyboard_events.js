@@ -18,6 +18,8 @@ window.onkeypress = function(e) {
       Current.note.doubleBemolize()   ;break
 
     case '*':
+      Current.note.noAlterize()        ;break
+    case '¥':
       Current.note.becarrize()        ;break
 
     case 'm':
