@@ -34,7 +34,13 @@ Raccourcis pour ajouter les altérations à la note sélectionnée.
 | Placer la note sur le snap suivant/précédent                 | ⌥ ▲/▼     |                                                              |
 | Déplacer la note horizontalement                             | ⇧◀︎/►      | Si le snap est sur la note, on la déplace à droite ou à gauche. Si le snap est ailleurs, on déplace la note sur lui (quelle que soit la flèche) |
 
+### Entourer la note d’un cercle
 
+Il suffit de **cliquer sur la note** pour l’entourer d’un cercle et il suffit de recliquer dessus (sur le cercle, en fait) pour le faire disparaitre.
+
+En changeant le mode **couleur** (bouton pied de page ou touche K), on peut obtenir un cercle de couleur bleu, vert, rouge ou jaune.
+
+---
 
 ## Annexe
 

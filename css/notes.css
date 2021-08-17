@@ -22,3 +22,9 @@ img.alteration {
   position: absolute;
   height: 120px;
 }
+
+img.note-circle {
+  position: absolute;
+  height: 82px;
+  width: 106px;
+}

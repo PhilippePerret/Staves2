@@ -31,6 +31,9 @@ class CurrentClass {
     n.setSelected()
   }
 
+  // Couleur courante (pour le cercle autour de la note pour le moment)
+  get color(){return this._color || 'bleu'}
+
   // La durée (mode) de la note gravée (soit une noire)
   get imageNote(){return this._note_duree_is_ronde ? 'ronde' : 'noire' }
 
@@ -71,6 +74,12 @@ changeModeSelecti(sans_marque){
   }
   UI.bntModeSelecti.innerHTML = this._mode_sans_marques ? 'clean' : 'marques'
   this.setModeSansMarques(this._mode_sans_marques)
+}
+changeModeColor(){
+  this._index_color = this._index_color || 1
+  this._index_color = (this._index_color + 1) % 5
+  this._color = [null,'bleu','vert','rouge','jaune'][this._index_color]
+  UI.btnModeColor.innerHTML = this._color
 }
 
 setModePortees(){

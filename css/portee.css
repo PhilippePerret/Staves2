@@ -4,6 +4,7 @@ div.portee {
   width:      4000px;
   /*overflow-x: hidden;*/
   overflow-y: visible;
+  /*cursor: url(/img/cursor-anneau.png) 0 0, pointer;*/
 }
 div.portee img.lignes {
   position: absolute;

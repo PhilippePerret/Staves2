@@ -101,6 +101,10 @@ update(){
   this._alterwidth    = null
   this.obj.style.top  = px(this.top)
   this.obj.style.left = px(this.noteLeft)
+  if ( this.circle ) {
+    this.circle.style.top   = px(this.circleTop)
+    this.circle.style.left  = px(this.circleLeft)
+  }
   this.graveAlteration()
   this.graveLignesSup()
   Current.isModePhrase && Current.setNextSnap(this.left)
@@ -137,7 +141,39 @@ build(){
   this.portee.add(this.obj)
   this.update()
   Notes.add(this)
+  this.observe()
 }
+
+/**
+ * Observe la note
+ */
+observe(){
+  this.obj.addEventListener('click', this.togglePointed.bind(this))
+}
+
+/**
+ * Permet de "pointer" la note, c'est-à-dire de l'entourer
+ */
+togglePointed(e){
+  this.circle || this.buildCircle()
+  this.isPointed = !this.isPointed
+  this.circle.style.display = this.isPointed ? 'block' : 'none'
+}
+
+/**
+ * Construire l'anneau autour de la note
+ */
+buildCircle(){
+  this.circle = DCreate('IMG', {src:`img/anneau-${Current.color}.png`, class:'note-circle'})
+  this.circle.style.top   = px(this.circleTop)
+  this.circle.style.left  = px(this.circleLeft)
+  this.portee.add(this.circle)
+  this.circle.addEventListener('click', this.togglePointed.bind(this))
+}
+
+get circleTop() { return this.top  - 12}
+get circleLeft(){ return this.left + 64 + (this.isRonde ? 10 : 0)}
+
 
 /**
  * Détruit complètement la note

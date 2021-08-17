@@ -23,6 +23,13 @@ window.onkeypress = function(e) {
     case '¥':
       Current.note.becarrize()        ;break
 
+    case 'k':
+      /**
+       * Changement de couleur
+       */
+       Current.changeModeColor.call(Current)
+       break
+       
     case 'm':
       /**
        * Changement de mode d'entrée phrase/accord
