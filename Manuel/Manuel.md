@@ -12,14 +12,14 @@ On choisit la note avec les lettres de “a” à “g” (notation anglo-saxonn
 
 Raccourcis pour ajouter les altérations à la note sélectionnée.
 
-| Altération                      | Raccourci | Note |
-| ------------------------------- | --------- | ---- |
-| Dièse                           | =         |      |
-| Double-dièse                    | ⌥ =       |      |
-| Bémol                           | -         |      |
-| Double-bémol                    | ⌥ -       |      |
-| Supprimer l’altération courante | *         | ⇧€   |
-| Bécarre (le signe)              | ⌥ *       | ⌥⇧€  |
+| Altération                      | Racc. 1 | Racc. 2 | Note |
+| ------------------------------- | ------- | ------- | ---- |
+| Dièse                           | u       | =       |      |
+| Double-dièse                    | ⌥ u     | ⌥ =     |      |
+| Bémol                           | o       | -       |      |
+| Double-bémol                    | ⌥ o     | ⌥ -     |      |
+| Supprimer l’altération courante | i       | *       | ⇧€   |
+| Bécarre (le signe)              | ⌥ i     | ⌥ *     | ⌥⇧€  |
 
 
 
@@ -27,12 +27,12 @@ Raccourcis pour ajouter les altérations à la note sélectionnée.
 
 ### Bouger la note (horizontalement et verticalement)
 
-| <span style="display:inline-block;min-width:300px;">Mouvement</span> | Raccourci | Note                                                         |
-| ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
-| Monter/descendre la note d’un degré                          | ▲/▼       | L’altération reste la même                                   |
-| Monter/descendre la note d’une octave                        | ⇧ ▲/▼     |                                                              |
-| Placer la note sur le snap suivant/précédent                 | ⌥ ▲/▼     |                                                              |
-| Déplacer la note horizontalement                             | ⇧◀︎/►      | Si le snap est sur la note, on la déplace à droite ou à gauche. Si le snap est ailleurs, on déplace la note sur lui (quelle que soit la flèche) |
+| <span style="display:inline-block;min-width:280px;">Mouvement</span> | <span style="display:inline-block;min-width:80px;">Racc 1</span> | <span style="display:inline-block;min-width:80px;">Racc 2</span> | Note                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Monter/descendre la note d’un degré                          |                                                              | ▲/▼                                                          | L’altération reste la même                                   |
+| Monter/descendre la note d’une octave                        |                                                              | ⇧ ▲/▼                                                        |                                                              |
+| Placer la note sur le snap suivant/précédent                 |                                                              | ⌥ ▲/▼                                                        |                                                              |
+| Déplacer la note horizontalement                             | ⇧ J / L                                                      | ⇧◀︎/►                                                         | Si le snap est sur la note, on la déplace à droite ou à gauche. Si le snap est ailleurs, on déplace la note sur lui (quelle que soit la flèche) |
 
 ### Entourer la note d’un cercle
 
@@ -46,17 +46,17 @@ En changeant le mode **couleur** (bouton pied de page ou touche K), on peut obte
 
 ### Raccourcis
 
-| <span style="display:inline-block;min-width:350px;">Effet</span> | Raccourci                                                    | <span style="display:inline-block;white-space:nowrap;min-width:250px;">Notes</span> |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Sélectionner la note suivante / précédente                   | ◀︎ / ▶︎                                                        |                                                              |
-| Se placer sur ke prochain/précédent “snap”                   | ⌥ ◀︎ / ▶︎                                                      |                                                              |
-| Sélectionner la portée supérieure (pour y placer/modifier des notes) | ![home-key](/Users/philippeperret/Programmes/Staves/Manuel/images/home-key.jpg) | En mode DUO ou PIANO                                         |
-| Sélectionner la portée inférieure (pour y placer/modifier des notes) | ![end-key](/Users/philippeperret/Programmes/Staves/Manuel/images/end-key.jpg) | En mode DUO ou PIANO                                         |
-| Bascule entre le mode “Accord” et le mode “Phrase”           | m                                                            | Détermine le mode d’entrée                                   |
-| Bascule entre “noire” et “ronde” pour la prochaine note à insérer | n                                                            |                                                              |
-| Bascule entre les trois modes de portée : SOLO (une seule portée), PIANO (deux portées, clé de sol et de fa), DUO (2 portées, clés de sol) | p                                                            | Presser autant de fois que voulu.                            |
-|                                                              |                                                              |                                                              |
-|                                                              |                                                              |                                                              |
-|                                                              |                                                              |                                                              |
-|                                                              |                                                              |                                                              |
+| <span style="display:inline-block;min-width:350px;">Effet</span> | <span style="display:inline-block;min-width:80px;">Racc 1</span> | <span style="display:inline-block;min-width:80px;">Racc 2</span> | <span style="display:inline-block;white-space:nowrap;min-width:250px;">Notes</span> |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Sélectionner la note suivante / précédente                   | j / l                                                        | ◀︎ / ▶︎                                                        |                                                              |
+| Se placer sur ke prochain/précédent “snap”                   | ⌥ j / k                                                      | ⌥ ◀︎ / ▶︎                                                      |                                                              |
+| Sélectionner la portée supérieure (pour y placer/modifier des notes) |                                                              | ![home-key](/Users/philippeperret/Programmes/Staves/Manuel/images/home-key.jpg) | En mode DUO ou PIANO                                         |
+| Sélectionner la portée inférieure (pour y placer/modifier des notes) |                                                              | ![end-key](/Users/philippeperret/Programmes/Staves/Manuel/images/end-key.jpg) | En mode DUO ou PIANO                                         |
+| Bascule entre le mode “Accord” et le mode “Phrase”           | m                                                            |                                                              | Détermine le mode d’entrée                                   |
+| Bascule entre “noire” et “ronde” pour la prochaine note à insérer | n                                                            |                                                              |                                                              |
+| Bascule entre les trois modes de portée : SOLO (une seule portée), PIANO (deux portées, clé de sol et de fa), DUO (2 portées, clés de sol) | p                                                            |                                                              | Presser autant de fois que voulu.                            |
+|                                                              |                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |                                                              |
 

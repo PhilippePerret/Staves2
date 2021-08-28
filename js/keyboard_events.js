@@ -6,22 +6,28 @@ window.onkeypress = function(e) {
       Current.changeModeSelecti(false) // on fait toujours ré-apparaitre les marques
       break
 
-    case '=': // Plus
+    case '=': case 'o': // Plus et "o"
       Current.note.diesize()
-      break
-    case '≠': // Alt Plus
+      break;
+    case '≠': case 'œ': // Alt Plus et "o"
       Current.note.doubleDiesize()
       break
 
-    case '-': // Moins
+    case '-': case 'u': // Moins et 'u'
       Current.note.bemolize()         ;break
-    case '—': // Alt Moins
+    case '—': case 'º': // Alt Moins||u
       Current.note.doubleBemolize()   ;break
 
-    case '*':
+    case '*': case 'i':
       Current.note.noAlterize()        ;break
-    case '¥':
+    case '¥': case 'î':
       Current.note.becarrize()        ;break
+
+    // pour "j" minuscule voir flèche gauche
+    case 'Ï':
+      Snap.previous(e);break
+    case 'J':
+      Current.note && Current.note.moveToPrevSnap(e);break
 
     case 'k':
       /**
@@ -29,6 +35,12 @@ window.onkeypress = function(e) {
        */
        Current.changeModeColor.call(Current)
        break
+
+    // pour "l" minuscule voir flèche droite
+    case 'L':
+      Current.note && Current.note.moveToNextSnap(e);break
+    case '¬':
+      Snap.next(e);break
        
     case 'm':
       /**
@@ -79,10 +91,10 @@ window.onkeyup = function(e) {
       Current.note && Current.note.up(e)
       break
 
-    case 'ArrowLeft':
-      if ( e.altKey ) {
+    case 'ArrowLeft': case 'j':
+      if ( e.altKey /* pour "j" cf. plus haut, à "J" */) {
         Snap.previous(e)
-      } else if ( e.shiftKey ) {
+      } else if ( e.shiftKey /* pour "j" voir plus haut à "J" */) {
         Current.note && Current.note.moveToPrevSnap(e)
       } else {
         if (Notes.pointer > 0) Current.note = Notes.goPrevious()
@@ -90,10 +102,10 @@ window.onkeyup = function(e) {
       }
       break
 
-    case 'ArrowRight':
-      if ( e.altKey ) {
+    case 'ArrowRight': case 'l':
+      if ( e.altKey /* pour "l" voir plus haut, à "L" */) {
         Snap.next(e)
-      } else if ( e.shiftKey ) {
+      } else if ( e.shiftKey /* pour "l" voir plus haut, à "L" */ ) {
         Current.note && Current.note.moveToNextSnap(e)
       } else {
         if (Notes.pointer < Notes.lastIndex) Current.note = Notes.goNext()

@@ -3,8 +3,8 @@
 * [BUG] Voir pourquoi la couleur passe par un vide (ajouter bleu, aussi)
 
 * Panneau préférences
-  * mettre les touches U/O pour dièse et bémol, I pour retirer et ALT-K pour bécarre
-  * mettre les touches J/K pour flèche gauche/droite
+  (tous les boutons seront des boutons pressoir en cycle)
+  * la hauteur de la note se met à proximité "lilypond" de la hauteur de la note sélectionnée (quarte avoisinante)
   * le curseur doit suivre les notes éditées (si une note est modifiée, le curseur se positionne sur elle, sinon, il reste en place)
   * mode par défaut (bascule entre les modes "phrase" et "accord")
   * couleur par défaut
