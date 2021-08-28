@@ -73,8 +73,9 @@ window.onkeypress = function(e) {
     case 's':
       /**
        * Changement du mode de sélection (marqueurs/clean)
+       * NON On se trompe trop souvent
        */
-       Current.changeModeSelecti.call(Current)
+       //Current.changeModeSelecti.call(Current)
        break
 
     case 'u': case '-': // Moins et 'u'
