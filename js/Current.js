@@ -1,4 +1,7 @@
 'use strict'
+
+const COLORS = ['noir','bleu','vert','rouge','jaune']
+
 /* ----------------------------------------------------------------
     Une classe pour retenir toutes les valeurs courantes :
     - la portée courante, 
@@ -78,7 +81,7 @@ changeModeSelecti(sans_marque){
 changeModeColor(){
   this._index_color = this._index_color || 1
   this._index_color = (this._index_color + 1) % 5
-  this._color = ['noir','bleu','vert','rouge','jaune'][this._index_color]
+  this._color = COLORS[this._index_color]
   UI.btnModeColor.innerHTML = this._color
 }
 

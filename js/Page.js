@@ -15,7 +15,7 @@ class Page {
     Current.setModePortees()
   }
   /**
-   * Appelée pour ajouter une page avec les paramètres +params+
+   * Appelée pour ajouter une portée avec les paramètres +params+
    * 
    */
   addPortee(params){

@@ -2,6 +2,8 @@
   user-select: none;
 }
 
+.hidden {display: none;}
+
 footer {
   position: fixed;
   /*width: 100%;*/

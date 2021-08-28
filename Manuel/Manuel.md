@@ -57,8 +57,18 @@ En changeant le mode **couleur** (bouton pied de page ou touche K), on peut obte
 | Bascule entre le mode “Accord” et le mode “Phrase”           | m                                                            |                                                              | Détermine le mode d’entrée                                   |
 | Bascule entre “noire” et “ronde” pour la prochaine note à insérer | n                                                            |                                                              |                                                              |
 | Bascule entre les trois modes de portée : SOLO (une seule portée), PIANO (deux portées, clé de sol et de fa), DUO (2 portées, clés de sol) | p                                                            |                                                              | Presser autant de fois que voulu.                            |
-| Entoure la note d’un cercle de la couleur choisie ou le retire | h                                                            |                                                              |                                                              |
+| Entoure la note d’un anneau de la couleur choisie ou le retire | h                                                            |                                                              |                                                              |
+| Panneau des préférences (ouvrir/fermer)                      | P                                                            |                                                              |                                                              |
 |                                                              |                                                              |                                                              |                                                              |
 |                                                              |                                                              |                                                              |                                                              |
-|                                                              |                                                              |                                                              |                                                              |
+
+---
+
+<a name="preferences"></name>
+
+## Préférences
+
+Noter que rien n’est enregistré en fichier, c’est une application entièrement statique. On se sert du stockage local pour mémoriser des choses (TODO : et pourquoi pas la dernière partition ?…)
+
+Raccourci pour ouvrir/fermer le panneau des préférences : **P**
 

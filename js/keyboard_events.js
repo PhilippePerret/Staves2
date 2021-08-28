@@ -63,6 +63,13 @@ window.onkeypress = function(e) {
        Current.changeModePortees.call(Current)
        break
 
+    case 'P':
+      /**
+       * Bascule le panneau des PRÉFÉRENCES
+       */
+       Preferences.toggle()
+       break
+
     case 's':
       /**
        * Changement du mode de sélection (marqueurs/clean)
