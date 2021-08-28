@@ -1,6 +1,7 @@
 # TODO liste
 
-* [BUG] Voir pourquoi la couleur passe par un vide (ajouter bleu, aussi)
+* Quand on supprime le rond autour de la note, il faut vraiment le détruire (pour pouvoir le reconstruire dans une autre couleur)
+* Trouver une touche pour sélectionner la note (pour le moment, seule la souris le fait)
 
 * Panneau préférences
   (tous les boutons seront des boutons pressoir en cycle)

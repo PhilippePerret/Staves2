@@ -95,6 +95,7 @@ moveToPrevSnap(e){
   this.update()
 }
 
+// Le degré 0-start de la note
 get indexNote(){
   return 'cdefgab'.indexOf(this.note)
 }
