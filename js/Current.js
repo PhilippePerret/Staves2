@@ -11,6 +11,14 @@ const COLORS = ['noir','bleu','vert','rouge','jaune']
 ---------------------------------------------------------------- */
 class CurrentClass {
 
+  // Note courante (instance Note)
+  get note() { return Notes.current }
+  set note(n){
+    if ( this._note ) this._note.unsetSelected()
+    this._note = n
+    n.setSelected()
+  }
+
   // Portée courante
   get portee(){return this._portee}
   set portee(p){this._portee = p}
@@ -20,22 +28,14 @@ class CurrentClass {
     this._snap = this.nextSnap
     return this.nextSnap
   }
-  get nextSnap(){return this._nextsnap || 200 }
+  get nextSnap(){return this._nextsnap || (this._nextsnap = Preferences.snap_width) }
   set nextSnap(v){
     this._nextsnap = v
     this.visualizeNextSnap()
   }
 
-  // Note courante (instance Note)
-  get note() { return Notes.current }
-  set note(n){
-    if ( this._note ) this._note.unsetSelected()
-    this._note = n
-    n.setSelected()
-  }
-
   // Couleur courante (pour le cercle autour de la note pour le moment)
-  get color(){return this._color || 'bleu'}
+  get color(){return this._color }
 
   // La durée (mode) de la note gravée (soit une noire)
   get imageNote(){return this._note_duree_is_ronde ? 'ronde' : 'noire' }
@@ -43,6 +43,19 @@ class CurrentClass {
   get isModePhrase(){return !!this._mode_insert_phrase}
 
 get modePortees(){return this._mode_portees || 0}
+
+/**
+ * Pour définir les valeurs au chargement de l'application
+ * 
+ */
+setPreferences(){
+  this._mode_insert_phrase  = Preferences.data['pref-mode_insert_phrase'] || 0
+  this.setModeInsert()
+  this._note_duree_is_ronde = Preferences.data['pref-note_duree_is_ronde'] || 0
+  this.setNoteDuree()
+  this._index_color = Preferences.data['pref-index_color']
+  this.setModeColor()
+}
 
 /**
  * Pour passer au "snap" suivant du décalage +left+
@@ -58,10 +71,16 @@ setNextSnap(left){
  */
 changeModeInsert(){
   this._mode_insert_phrase = ! this._mode_insert_phrase
+  this.setModeInsert()
+}
+setModeInsert(){
   UI.btnModeInsert.innerHTML = 'mode ' + (this._mode_insert_phrase ? 'phrase' : 'accord')
 }
 changeNoteDuree(){
   this._note_duree_is_ronde = !this._note_duree_is_ronde
+  this.setNoteDuree()
+}
+setNoteDuree(){
   UI.btnNoteDuree.innerHTML = this._note_duree_is_ronde ? 'ronde' : 'noire'
 }
 changeModePortees(){
@@ -69,7 +88,7 @@ changeModePortees(){
   this._mode_portees = (this._mode_portees + 1) % 3
   this.setModePortees()
 }
-changeModeSelecti(sans_marque){
+changeModeSelecti(e, sans_marque){
   if (undefined == sans_marque) {
     this._mode_sans_marques = !this._mode_sans_marques
   } else {
@@ -79,10 +98,14 @@ changeModeSelecti(sans_marque){
   this.setModeSansMarques(this._mode_sans_marques)
 }
 changeModeColor(){
-  this._index_color = this._index_color || 1
+  this._index_color = this._index_color || (Preferences.index_color - 1 /* car on ajoute 1 ci-dessous */)
   this._index_color = (this._index_color + 1) % 5
+  return this.setModeColor()
+}
+setModeColor(){
   this._color = COLORS[this._index_color]
   UI.btnModeColor.innerHTML = this._color
+  return this._color
 }
 
 setModePortees(){

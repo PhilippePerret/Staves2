@@ -34,16 +34,22 @@ section#preferences-panel div.div-data input[type="checkbox"] + label {
   margin-left: 0.5em;
   vertical-align: middle;
 }
-section#preferences-panel div.pressoirs label {
+section#preferences-panel div.type-valeur label {
   display: inline-block;
   width: 300px;
 }
-section#preferences-panel div.pressoirs label:after {
+section#preferences-panel div.type-valeur label:after {
   content:  " : ";
 }
-section#preferences-panel div.pressoirs button {
+section#preferences-panel div.type-valeur button {
   font-size: inherit;
   font-family:  inherit;
-  margin-left: 1em;
+  /*margin-left: 1em;*/
   width: 100px;
+}
+section#preferences-panel div.type-valeur input[type="text"] {
+  font-size: inherit;
+  font-family: inherit;
+  width: 100px; /* même que bouton, pour aspect */
+  text-align: center;
 }
