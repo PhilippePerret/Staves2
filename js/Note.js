@@ -65,24 +65,33 @@ setAlteration(name){
   this.update()
 }
 
+// Monter la note d'un degré
 getNoteUp(){
   let idx = this.indexNote
   this.note == 'b' && ( ++ this.octave )
   this.note = 'defgabc'.substring(idx, idx + 1)
 }
+
+// Descendre la note d'un degré
 getNoteDown(){
   let idx = this.indexNote
   if ( this.note == 'c' ) -- this.octave ;
   this.note = 'bcdefga'.substring(idx, idx + 1)
 }
 
-
+// Déplacer la note au pas suivant
 moveToNextSnap(e){
-  if ( this.left == Current.snap) Snap.next(e)
+  Snap.set(this.left += SNAP_WIDTH)
+  // if ( this.left == Current.snap) Snap.next(e)
+  // this.left = Current.snap
   this.update()
 }
+
+// Déplacer la note au pas précédent
 moveToPrevSnap(e){
-  if ( this.left == Current.snap) Snap.previous(e)
+  Snap.set(this.left -= SNAP_WIDTH)
+  // if ( this.left == Current.snap) Snap.previous(e)
+  // this.left = Current.snap
   this.update()
 }
 
@@ -95,7 +104,6 @@ get indexNote(){
  * 
  */
 update(){
-  this.left = Current.snap
   this._top           = null
   this._ligsupleft    = null
   this._alterwidth    = null
@@ -107,7 +115,6 @@ update(){
   }
   this.graveAlteration()
   this.graveLignesSup()
-  Current.isModePhrase && Current.setNextSnap(this.left)
 }
 
 setSelected()   {this.obj.classList.add('selected')}
@@ -139,7 +146,9 @@ build(){
   let img = DCreate('IMG', {src: `img/note-${this.type}.svg`, class:`note ${this.type}`})
   this.obj = img
   this.portee.add(this.obj)
+  this.left = Current.snap
   this.update()
+  Current.isModePhrase && Current.setNextSnap(this.left)
   Notes.add(this)
   this.observe()
 }

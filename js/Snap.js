@@ -26,6 +26,9 @@ previous(e){
   Current.nextSnap = Current.snap - SNAP_WIDTH
 }
 
+set(left){
+  Current.nextSnap = left
+}
 
 }
 const Snap = new SnapClass()
