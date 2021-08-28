@@ -6,22 +6,14 @@ window.onkeypress = function(e) {
       Current.changeModeSelecti(false) // on fait toujours ré-apparaitre les marques
       break
 
-    case '=': case 'o': // Plus et "o"
-      Current.note.diesize()
-      break;
-    case '≠': case 'œ': // Alt Plus et "o"
-      Current.note.doubleDiesize()
+    case 'h':
+      Current.note && Current.note[(Current.note.anneau?'remove':'draw')+'Anneau'].call(Current.note)
       break
 
-    case '-': case 'u': // Moins et 'u'
-      Current.note.bemolize()         ;break
-    case '—': case 'º': // Alt Moins||u
-      Current.note.doubleBemolize()   ;break
-
-    case '*': case 'i':
-      Current.note.noAlterize()        ;break
-    case '¥': case 'î':
-      Current.note.becarrize()        ;break
+    case 'i': case '*': 
+      Current.note && Current.note.noAlterize()        ;break
+    case 'î': case '¥':
+      Current.note && Current.note.becarrize()        ;break
 
     // pour "j" minuscule voir flèche gauche
     case 'Ï':
@@ -57,6 +49,12 @@ window.onkeypress = function(e) {
       Current.changeNoteDuree.call(Current)
       break
 
+    case 'o': case '=': // Plus et "o"
+      Current.note.diesize()
+      break;
+    case 'œ': case '≠': // Alt Plus et "o"
+      Current.note.doubleDiesize()
+      break
 
     case 'p':
       /**
@@ -71,6 +69,11 @@ window.onkeypress = function(e) {
        */
        Current.changeModeSelecti.call(Current)
        break
+
+    case 'u': case '-': // Moins et 'u'
+      Current.note.bemolize()         ;break
+    case '—': case 'º': // Alt Moins||u
+      Current.note.doubleBemolize()   ;break
 
     default:
       console.info("KEY-PRESS e.key = ", e.key)

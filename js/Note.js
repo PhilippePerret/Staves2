@@ -110,9 +110,9 @@ update(){
   this._alterwidth    = null
   this.obj.style.top  = px(this.top)
   this.obj.style.left = px(this.noteLeft)
-  if ( this.circle ) {
-    this.circle.style.top   = px(this.circleTop)
-    this.circle.style.left  = px(this.circleLeft)
+  if ( this.anneau ) {
+    this.anneau.style.top   = px(this.anneauTop)
+    this.anneau.style.left  = px(this.anneauLeft)
   }
   this.graveAlteration()
   this.graveLignesSup()
@@ -165,27 +165,27 @@ observe(){
  * Permet de "pointer" la note, c'est-à-dire de l'entourer
  */
 drawAnneau(e){
-  this.buildCircle()
+  this.buildAnneau()
 }
 removeAnneau(e){
-  this.circle.removeEventListener('click', this.removeAnneau.bind(this))
-  this.circle.remove()
-  this.circle = null
+  this.anneau.removeEventListener('click', this.removeAnneau.bind(this))
+  this.anneau.remove()
+  this.anneau = null
 }
 
 /**
  * Construire l'anneau autour de la note
  */
-buildCircle(){
-  this.circle = DCreate('IMG', {src:`img/anneau-${Current.color}.png`, class:'note-circle'})
-  this.circle.style.top   = px(this.circleTop)
-  this.circle.style.left  = px(this.circleLeft)
-  this.portee.add(this.circle)
-  this.circle.addEventListener('click', this.removeAnneau.bind(this))
+buildAnneau(){
+  this.anneau = DCreate('IMG', {src:`img/anneau-${Current.color}.png`, class:'note-anneau'})
+  this.anneau.style.top   = px(this.anneauTop)
+  this.anneau.style.left  = px(this.anneauLeft)
+  this.portee.add(this.anneau)
+  this.anneau.addEventListener('click', this.removeAnneau.bind(this))
 }
 
-get circleTop() { return this.top  - 12}
-get circleLeft(){ return this.left + 64 + (this.isRonde ? 10 : 0)}
+get anneauTop() { return this.top  - 12}
+get anneauLeft(){ return this.left + 64 + (this.isRonde ? 10 : 0)}
 
 
 /**

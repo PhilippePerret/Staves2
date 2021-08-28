@@ -36,6 +36,8 @@ Raccourcis pour ajouter les altérations à la note sélectionnée.
 
 ### Entourer la note d’un cercle
 
+Raccourci : h (pour l’enlever et la mettre)
+
 Il suffit de **cliquer sur la note** pour l’entourer d’un cercle et il suffit de recliquer dessus (sur le cercle, en fait) pour le faire disparaitre.
 
 En changeant le mode **couleur** (bouton pied de page ou touche K), on peut obtenir un cercle de couleur bleu, vert, rouge ou jaune.
@@ -46,7 +48,7 @@ En changeant le mode **couleur** (bouton pied de page ou touche K), on peut obte
 
 ### Raccourcis
 
-| <span style="display:inline-block;min-width:350px;">Effet</span> | <span style="display:inline-block;min-width:80px;">Racc 1</span> | <span style="display:inline-block;min-width:80px;">Racc 2</span> | <span style="display:inline-block;white-space:nowrap;min-width:250px;">Notes</span> |
+| <span style="display:inline-block;min-width:300px;">Effet</span> | <span style="display:inline-block;min-width:80px;">Racc 1</span> | <span style="display:inline-block;min-width:80px;">Racc 2</span> | <span style="display:inline-block;white-space:nowrap;min-width:200px;">Notes</span> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Sélectionner la note suivante / précédente                   | j / l                                                        | ◀︎ / ▶︎                                                        |                                                              |
 | Se placer sur ke prochain/précédent “snap”                   | ⌥ j / k                                                      | ⌥ ◀︎ / ▶︎                                                      |                                                              |
@@ -55,7 +57,7 @@ En changeant le mode **couleur** (bouton pied de page ou touche K), on peut obte
 | Bascule entre le mode “Accord” et le mode “Phrase”           | m                                                            |                                                              | Détermine le mode d’entrée                                   |
 | Bascule entre “noire” et “ronde” pour la prochaine note à insérer | n                                                            |                                                              |                                                              |
 | Bascule entre les trois modes de portée : SOLO (une seule portée), PIANO (deux portées, clé de sol et de fa), DUO (2 portées, clés de sol) | p                                                            |                                                              | Presser autant de fois que voulu.                            |
-|                                                              |                                                              |                                                              |                                                              |
+| Entoure la note d’un cercle de la couleur choisie ou le retire | h                                                            |                                                              |                                                              |
 |                                                              |                                                              |                                                              |                                                              |
 |                                                              |                                                              |                                                              |                                                              |
 |                                                              |                                                              |                                                              |                                                              |
