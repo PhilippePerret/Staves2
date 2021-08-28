@@ -158,16 +158,19 @@ build(){
  * Observe la note
  */
 observe(){
-  this.obj.addEventListener('click', this.togglePointed.bind(this))
+  this.obj.addEventListener('click', this.drawAnneau.bind(this))
 }
 
 /**
  * Permet de "pointer" la note, c'est-à-dire de l'entourer
  */
-togglePointed(e){
-  this.circle || this.buildCircle()
-  this.isPointed = !this.isPointed
-  this.circle.style.display = this.isPointed ? 'block' : 'none'
+drawAnneau(e){
+  this.buildCircle()
+}
+removeAnneau(e){
+  this.circle.removeEventListener('click', this.removeAnneau.bind(this))
+  this.circle.remove()
+  this.circle = null
 }
 
 /**
@@ -178,7 +181,7 @@ buildCircle(){
   this.circle.style.top   = px(this.circleTop)
   this.circle.style.left  = px(this.circleLeft)
   this.portee.add(this.circle)
-  this.circle.addEventListener('click', this.togglePointed.bind(this))
+  this.circle.addEventListener('click', this.removeAnneau.bind(this))
 }
 
 get circleTop() { return this.top  - 12}
