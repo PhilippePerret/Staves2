@@ -49,10 +49,10 @@ window.onkeypress = function(e) {
       Current.changeNoteDuree.call(Current)
       break
 
-    case 'o': case '=': // Plus et "o"
+    case 'u': case '=': // Plus et "o"
       Current.note.diesize()
       break;
-    case 'œ': case '≠': // Alt Plus et "o"
+    case 'º': case '≠': // Alt Plus et "o"
       Current.note.doubleDiesize()
       break
 
@@ -78,9 +78,9 @@ window.onkeypress = function(e) {
        //Current.changeModeSelecti.call(Current)
        break
 
-    case 'u': case '-': // Moins et 'u'
+    case 'o': case '-': // Moins et 'u'
       Current.note.bemolize()         ;break
-    case '—': case 'º': // Alt Moins||u
+    case 'œ': case 'º': // Alt Moins||u
       Current.note.doubleBemolize()   ;break
 
     default:
