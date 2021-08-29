@@ -25,7 +25,7 @@ window.onkeypress = function(e) {
       /**
        * Changement de couleur
        */
-       Current.changeModeColor.call(Current)
+       Current.note && Current.changeModeColor.call(Current)
        break
 
     // pour "l" minuscule voir flèche droite
@@ -50,10 +50,10 @@ window.onkeypress = function(e) {
       break
 
     case 'u': case '=': // Plus et "o"
-      Current.note.diesize()
+      Current.note && Current.note.diesize()
       break;
     case 'º': case '≠': // Alt Plus et "o"
-      Current.note.doubleDiesize()
+      Current.note && Current.note.doubleDiesize()
       break
 
     case 'p':
@@ -79,9 +79,9 @@ window.onkeypress = function(e) {
        break
 
     case 'o': case '-': // Moins et 'u'
-      Current.note.bemolize()         ;break
+      Current.note && Current.note.bemolize()         ;break
     case 'œ': case 'º': // Alt Moins||u
-      Current.note.doubleBemolize()   ;break
+      Current.note && Current.note.doubleBemolize()   ;break
 
     default:
       console.info("KEY-PRESS e.key = ", e.key)
