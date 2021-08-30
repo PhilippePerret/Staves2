@@ -1,4 +1,7 @@
 'use strict';
+/*
+  Version 1.0.0
+*/
 
 const DATA_PREFERENCES = {
   checkboxes: [
