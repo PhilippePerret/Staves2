@@ -1,9 +1,10 @@
 
 window.onkeypress = function(e) {
   switch(e.key){
+
     case 'c': case 'd': case 'e': case 'f': case 'g': case 'a': case 'b' :
       Current.portee.buildNote({note: e.key})
-      Current.changeModeSelecti(false) // on fait toujours ré-apparaitre les marques
+      Current.changeModeSelecti(null, false) // on fait toujours ré-apparaitre les marques
       break
 
     case 'h':
@@ -41,6 +42,8 @@ window.onkeypress = function(e) {
       Current.changeModeInsert.call(Current)
       break
 
+    case 'M':
+      Manuel.toggle.call(Manuel);break
 
     case 'n':
       /**
@@ -49,12 +52,10 @@ window.onkeypress = function(e) {
       Current.changeNoteDuree.call(Current)
       break
 
-    case 'u': case '=': // Plus et "o"
-      Current.note && Current.note.diesize()
-      break;
-    case 'º': case '≠': // Alt Plus et "o"
-      Current.note && Current.note.doubleDiesize()
-      break
+    case 'o': case '-': // Moins et 'u'
+      Current.note && Current.note.bemolize()         ;break
+    case 'œ': case '—': // Alt Moins||u
+      Current.note && Current.note.doubleBemolize()   ;break
 
     case 'p':
       /**
@@ -78,10 +79,25 @@ window.onkeypress = function(e) {
        //Current.changeModeSelecti.call(Current)
        break
 
-    case 'o': case '-': // Moins et 'u'
-      Current.note && Current.note.bemolize()         ;break
-    case 'œ': case 'º': // Alt Moins||u
-      Current.note && Current.note.doubleBemolize()   ;break
+    case 'T':
+      /**
+       * Lorsque Staves est "incrusté" dans la table d'analyse,
+       * ce raccourci permet de repasser à la table d'harmonie
+       * 
+       */
+      window.parent.postMessage({
+        'operation': 'activateTableAnalyse',
+        'message': 'Je reviens sur la table d’analyse.'
+      }, "*");
+      break
+
+    case 'u': case '=': // Plus et "o"
+      Current.note && Current.note.diesize()
+      break;
+    case 'º': case '≠': // Alt Plus et "o"
+      Current.note && Current.note.doubleDiesize()
+      break
+
 
     default:
       console.info("KEY-PRESS e.key = ", e.key)

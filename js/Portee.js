@@ -17,7 +17,31 @@ add(o){ this.obj.appendChild(o) }
  *    note:     La note (a-g)
  */
 buildNote(params){
-  var n = new Note({portee: this, note: params.note, octave: 3})
+  // On doit trouver l'octave en fonction de la note courante
+  var octave = 3 ;
+  if ( Current.note && Preferences.data['cb-same-note-pitch'] ){
+    var dnote = {portee:Current.note.portee, note:params.note}
+    var candidats = [
+        new Note(Object.assign(dnote, {octave:Current.note.octave - 1}))
+      , new Note(Object.assign(dnote, {octave:Current.note.octave    }))
+      , new Note(Object.assign(dnote, {octave:Current.note.octave + 1}))
+    ]
+    var dist = 10000 ; // distance 
+    var candidat ; // note la plus proche
+    candidats.forEach(n => {
+      if ( Math.abs(Current.note.top - n.top) < dist ){
+        dist = Math.abs(Current.note.top - n.top)
+        candidat = n
+      }
+    })
+    octave = candidat.octave
+  }
+  // On doit trouver la portée en fonction de la note et des préfé-
+  // rences
+  if ( Preferences.data['cb-change-staff-on-c-median']){
+    console.info("TODO On doit peut-être changer de portée")
+  }
+  var n = new Note({portee: this, note: params.note, octave: octave})
   n.build() // l'ajoute à Notes.items
   this.notes || (this.notes = [])
   this.notes.push(n)

@@ -58,7 +58,7 @@ removeCurrent(){
 
 resetPointer(){this.pointer = this.items.length - 1}
 setPointer(v){
-  console.info("Pointer mis à ", v)
+  // console.info("Pointer mis à ", v)
   this.pointer = v;
   Current.note = this.current
 }

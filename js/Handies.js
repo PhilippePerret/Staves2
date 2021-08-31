@@ -3,7 +3,11 @@
 
   MÉTHODES PRATIQUES
   ------------------
-  Version 1.2.0
+  Version 1.3.0
+
+# 1.3.0
+  Ajout de l'event 'message' sur window, permettant de recevoir des
+  message par origin croisée.
 
 # 1.2.0
   Ajout de la méthode focusIn. Qui permet de focusser dans un élément
@@ -141,4 +145,21 @@ function loadJSModule(moduleName){
     document.body.appendChild(script)
     script.addEventListener('load', ok)
   })
+}
+
+/**
+ * Pour pouvoir recevoir des messages de la part de Staves (et
+ * notamment pouvoir repasser à la table)
+ *
+ */
+window.addEventListener("message", onMessage, false);
+function onMessage(e){
+  const data = e.data
+  switch(data.operation){
+    case 'activate':
+      document.body.click()
+      document.body.querySelector('section#page').focus()
+      document.body.querySelector('section#page').click()
+      break
+  }
 }

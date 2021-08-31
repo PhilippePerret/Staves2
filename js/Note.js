@@ -24,6 +24,14 @@ constructor(data){
   this.note       = data.note
   this.octave     = data.octave
   this.alteration = data.alteration
+  /**
+   * WARNING
+   * -------
+   *    Il ne faut surtout pas ajouter la note dans le DOM ou dans 
+   *    une liste d'instances ici, car la classe permet aussi 
+   *    d'instancier des notes qui ne seront jamais écrites.
+   * 
+   */
 }
 
 /**
@@ -123,11 +131,30 @@ unsetSelected() {this.obj.classList.remove('selected')}
 
 
 /**
- * Le left de la note, en fonction du fait qu'il y ait ou non une
- * altération
+ * Le left de la note
+ * Fonction du fait que la note précédente est à moins d'un demi-ton
  */
 get noteLeft(){
-  return this.left + NOTE_OFFSET
+  var nl = this.left + NOTE_OFFSET
+  // Y a-t-il une note à moins d'un demi-ton, sur le même octave et
+  // le même left absolu ?
+  Notes.items.forEach( n => {
+    console.log("la note : ", n)
+    console.log("Math.abs(n.indexNote - this.indexNote) = ", Math.abs(n.indexNote - this.indexNote))
+    var idx = Number(this.indexNote);
+    this.note == 'c' && (idx += 1);
+    if ( this.left == n.left /* TODO : est-ce vraiment des valeurs "absolues" */) {
+      if ( idx - n.indexNote < 2 ) {
+        const meme_octave = n.octave == this.octave
+        const si_et_do_proches = n.note == 'b' && this.note == 'c' && this.octave == n.octave + 1
+        if ( meme_octave || si_et_do_proches ) {
+          nl += 78        
+        }
+      }
+    }
+  })
+
+  return nl
 }
 /**
  * Le left des notes supplémentaires, en fonction du fait qu'il y a

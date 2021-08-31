@@ -1,10 +1,10 @@
 # TODO liste
 
-* Traiter le réglage en fonction des préférences
-* Gérer la position de la note à proximité de quarte (si préférences)
-* Traiter la préférence "le curseur suit toujours la note éditée"
-* Traiter les préférences "mode d'insertion par défaut", "note par défaut", "couleur par défaut"
+
 * Traiter le passage automatique à la portée dessus/dessous en mode piano quand on passe le do médian
 
+* [BUG] Affiner le cas où la note a été décalée (comme quand on place un LA près un SOL au même octave sur le même accord) et où on lui place une altération (elle se déplace encore plus, alors qu'elle ne devrait pas bouger)
+* [BUG] Si on écrit LA puis SOL au même octave en accord, le LA devrait se décaler (comme il le fait lorsqu'on l'écrit après)
 
-* Panneau avec tous les raccourcis (dans le panneau préférences ?)
+
+* Panneau avec tous les raccourcis (c'est Manuel.js qui s'en charge, rien n'est à faire, normalement, que modifier Manuel.js dans Table d'analyse et le reporter ici.)

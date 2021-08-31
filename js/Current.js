@@ -49,11 +49,11 @@ get modePortees(){return this._mode_portees || 0}
  * 
  */
 setPreferences(){
-  this._mode_insert_phrase  = Preferences.data['pref-mode_insert_phrase'] || 0
+  this._mode_insert_phrase  = Number(Preferences.data['pref-mode_insert_phrase'] || 0)
   this.setModeInsert()
-  this._note_duree_is_ronde = Preferences.data['pref-note_duree_is_ronde'] || 0
+  this._note_duree_is_ronde = Number(Preferences.data['pref-note_duree_is_ronde'] || 0)
   this.setNoteDuree()
-  this._index_color = Preferences.data['pref-index_color']
+  this._index_color = Number(Preferences.data['pref-index_color'])
   this.setModeColor()
 }
 
