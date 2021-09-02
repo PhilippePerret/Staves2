@@ -3,6 +3,11 @@
 
 # TODO liste
 
+* Préférence : ne pas jouer la note MIDI à l'écriture
+  => Documenter
+
+* Jouer le son de la note quand on la rentre avec les touches aussi
+  -> Préférence ? -> mettre en place -> documenter
 
 * Traiter le passage automatique à la portée dessus/dessous en mode piano quand on passe le do médian OU quand on est en mode MIDI qui respecte les hauteurs
 

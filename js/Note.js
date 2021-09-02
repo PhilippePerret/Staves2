@@ -257,7 +257,7 @@ onClickNote(){
 }
 
 play(){
-  console.log("Je dois jouer cette note", this)
+  // console.log("Je dois jouer cette note", this)
   var n = this.note.toUpperCase()
   var o = this.octave
   if (this.alteration) {
