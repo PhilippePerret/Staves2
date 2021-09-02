@@ -42,13 +42,19 @@ class Interconnexion {
    */
   static onMessage(e){
     const data = e.data
-    const interconnexion = this.items[data.other]
-    interconnexion.recieve(data)
+    const interconnexion = this.items[data.name]
+    interconnexion.receive(data)
+  }
+
+  static add(conn){
+    this.items || (this.items = {})
+    Object.assign(this.items, {[conn.name]: conn})
   }
 
   constructor(data){
     this.name   = data.name ; // p.e. "Interconnexion avec Staves"
     this.other  = data.other ; // Objet DOM de l'auteur
+    this.constructor.add(this)
   }
 
   /**
@@ -56,17 +62,9 @@ class Interconnexion {
    * 
    */
   send(data){
-    this.other.contentWindow.postMessage(Object.assign(data, {name:this.name}))
+    Object.assign(data, {name:this.name})
+    this.other.postMessage(data,'*')
   }
-
-  /**
-   * Recevoir des données de l'autre côté
-   * 
-   */
-  receive(data){
-
-  }
-
 
 }
 
