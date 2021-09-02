@@ -7,6 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     UI.observe()
     page.addPortees()
     Current.visualizeNextSnap()
-    Interconnexion.init()
+    Duplex.init()
 }, false);
 

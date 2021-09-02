@@ -1,3 +1,9 @@
+# TODO Remontée
+
+* Modifier les préférences pour qu'elles ressemblent à celle de la
+  table d'analyse
+* Calculer la vraie note (class Note) en fonction de la tonalité définie
+
 # TODO liste
 
 

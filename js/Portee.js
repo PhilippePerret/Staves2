@@ -15,12 +15,33 @@ add(o){ this.obj.appendChild(o) }
  * 
  * +params+
  *    note:     La note (a-g)
+ *    octave:   [Optionnel] L'octave (envoyé MIDI)
  */
 buildNote(params){
   // On doit trouver l'octave en fonction de la note courante
-  var octave = 3 ;
+  var octave = params.octave || this.findOctaveForNote(params.note);
+
+   // On doit trouver la portée en fonction de la note et des préfé-
+  // rences
+  if ( Preferences.data['cb-change-staff-on-c-median']){
+    console.info("TODO On doit peut-être changer de portée")
+  }
+  var n = new Note({portee: this, note: params.note, octave: octave})
+  n.build() // l'ajoute à Notes.items
+  this.notes || (this.notes = [])
+  this.notes.push(n)
+  Current.note = n
+}
+
+/**
+ * Cherche l'octave pour la note +note+ en fonction des préférences
+ * 
+ * @return {Number} L'octave
+ */
+findOctaveForNote(note){
+  var octave = 3
   if ( Current.note && Preferences.data['cb-same-note-pitch'] ){
-    var dnote = {portee:Current.note.portee, note:params.note}
+    var dnote = {portee:Current.note.portee, note:note}
     var candidats = [
         new Note(Object.assign(dnote, {octave:Current.note.octave - 1}))
       , new Note(Object.assign(dnote, {octave:Current.note.octave    }))
@@ -36,16 +57,7 @@ buildNote(params){
     })
     octave = candidat.octave
   }
-  // On doit trouver la portée en fonction de la note et des préfé-
-  // rences
-  if ( Preferences.data['cb-change-staff-on-c-median']){
-    console.info("TODO On doit peut-être changer de portée")
-  }
-  var n = new Note({portee: this, note: params.note, octave: octave})
-  n.build() // l'ajoute à Notes.items
-  this.notes || (this.notes = [])
-  this.notes.push(n)
-  Current.note = n
+  return octave
 }
 
   /**

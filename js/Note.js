@@ -18,6 +18,24 @@ const NOTE_OFFSET = 1.5 * ALTER_WIDTH
 
 class Note {
 
+  /**
+   * Reçoit une note — qui peut être exprimée façon MIDI (A#) — et
+   * retourne une table contenant : 
+   *    {note:'<note minuscule>', alteration:<alter>}
+   * en tenant compte de la tonalité par défaut.
+   * Par exemple, si A# est envoyé, et que la tonalité est DO majeur
+   * la table retournée sera :
+   *    {note:'b', alteration: 'b'}
+   * … car en DO majeur, par enharmonie, c'est le SI bémol qui est le
+   * plus proche.
+   * 
+   * 
+   * @return {:note, :alteration}
+   */
+  static dataNoteInTune(note){
+    
+  }
+
 constructor(data){
   this.data       = data
   this.portee     = data.portee
