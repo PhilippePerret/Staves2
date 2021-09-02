@@ -1,8 +1,7 @@
 'use strict';
 /*
-  Version 1.0.0
+  Version 1.0.1
 */
-
 
 class PreferencesClass {
 
@@ -12,10 +11,28 @@ class PreferencesClass {
    * Note : permet aussi de régler les valeurs par défaut
    * 
    */
-get snap_width(){
-  return this._snap_width|| (this._snap_width = this.data['default-snap-width'] || 200)
+
+/**
+ * Applique les valeurs par défaut si elles ne sont pas définies
+ */
+defaultizeData(){
+  this.setIfUndefined('marque_accords_size', 30)
+  this.setIfUndefined('distance_systemes', 50)
+  this.setIfUndefined('top_first_system', 50)
+
 }
-get index_color(){return Number(this.data['pref-index_color'] || 1)}
+/**
+ * ==== MÉTHODES PROPRES ====
+ * 
+ */
+
+init(){
+  this.data // pour l'instancier
+}
+
+setIfUndefined(key, value){
+  if ( 'undefined' == typeof this.data[key] ) Object.assign(this.data, {[key]: value})
+}
 
 toggle(){
   this.isOpened ? this.hide() : this.open()
@@ -38,37 +55,47 @@ show(){
 }
 
 
-get data(){return this._data || (this._data = this.getData())}
+get data(){return this._data || this.getData()}
 
 // Construction du panneau
 build(){
   var o = DCreate('SECTION', {id:'preferences-panel'})
   o.appendChild(DCreate('DIV', {id:'tip-close', text:"(⇧ P pour fermer)"}))
   o.appendChild(DCreate('H2',{text:'Préférences'}))
-  // CB pour pitch à proximité de quarte pour nouvelle note
-  o.appendChild(this.buildCheckBox({id:'cb-same-note-pitch', label: 'Créer toujours la note à distance de quarte de la note sélectionnée', description:'Dans le cas contraire, la note sera toujours créée à la même hauteur de base, en partant du do médian.'}))
-  // CB pour curseur suit note éditée
-  o.appendChild(this.buildCheckBox({id:'cb-cursor-follow-edited-note', label: 'Le curseur suit toujours la note éditée', description:"Dans le cas contraire, le contraire restera en place, là où il se trouve."}))
-  // CB pour changement de portée à DO
-  o.appendChild(this.buildCheckBox({id:'cb-change-staff-on-c-median', label: 'En mode piano, on change de portée au DO médian', description:"C'est-à-dire que dès qu'on arrive sur le DO3, si on descend, on passe sur la portée en clé de FA pour poursuivre et si on monte on passe sur la clé de SOL (note : le DO médian est toujours placé sur la clé de SOL)."}))
-  // Préférence de mode
-  o.appendChild(this.buildChoixPressoirs({id:'pref-mode_insert_phrase', label:"Mode d'insertion par défaut", values:["Accord", "Phrase"], description: "Détermine si le curseur reste en position après l'insertion d'une note (mode Accord) ou s'il se déplace au snap suivant (mode Phrase)."}))
-  // Préférences de note
-  o.appendChild(this.buildChoixPressoirs({id:'pref-note_duree_is_ronde', label:"Note par défaut", values:["Ronde", "Noire"], description: "Détermine le style de note qui apparaitra."}))
-  // Préférences de couleur par défaut
-  o.appendChild(this.buildChoixPressoirs({id:'pref-index_color', label:"Couleur de l'anneau par défaut", values:COLORS.map(c => {c = c.split('');c[0]=c[0].toUpperCase();return c.join('')}), description: "Définit la couleur par défaut de l'anneau autour d'une note mise en exergue. On peut aussi la modifier avec la touche « k »."}))
+
+  // Pour simplifier l'écriture
+  const DA = this.data
+
+  if ( 'undefined' == typeof PreferencesAppData) {
+    alert("Il faut définir la constant 'PreferencesAppData' définissant les données de préférences")
+  } else {
+    PreferencesAppData.forEach( dp => {
+      if ( dp.type == 'inputtext'){
+        o.appendChild(this.buildInputText(dp))
+      } else if ( dp.type == 'checkbox' ) {
+        o.appendChild(this.buildCheckBox(dp))
+      } else if ( dp.type == 'pressoir' ) {
+        o.appendChild(this.buildChoixPressoirs(dp))
+      }
+    })
+  }
+
   document.body.appendChild(o)
 
-  // Préférence de distance de snap
-  o.appendChild(this.buildInputText({id:'default-snap_width', label:"Snap entre les notes (en pixels)", value:this.snap_width, description:"La distance conseillée est 200 pixels. Penser à tenir compte du fait qu'il peut y avoir des altérations (essayer toujours avec le double-bémol)."}))
+
   this.obj = o
+  this.observe()
+}
+
+observe(){
+  listen(this.obj, 'dblclick', e => {return stopEvent(e)})
 }
 
 saveData(key, val){
   if ( 'function' == typeof val ) val = val.call()
-  // console.log("Valeur de '%s' enregistrée : '%s'", key, val)
   this.data[key] = val
   localStorage.setItem(key, val)
+  Record.ON && Record.preference(key, val)
 }
 
 getData(){
@@ -81,7 +108,10 @@ getData(){
     Object.assign(data, {[key]: val})
   }
   // console.log("Data préférences :", data)
-  return data
+  this._data = data
+  this.defaultizeData()
+  window.Pref = data // pour pouvoir faire Pref[key]
+  return this._data
 }
 
 /**
@@ -158,7 +188,7 @@ buildInputText(params){
   const div = DCreate('DIV', {id:`div-${params.id}`, class:'type-valeur div-data'})
   const lab = DCreate('LABEL', {text:params.label})
   div.appendChild(lab)
-  const field = DCreate('INPUT', {type:'text', id:params.id, value: this[prop] /* renverra la valeur par défaut */})
+  const field = DCreate('INPUT', {type:'text', id:params.id, value: params.value || this.data[params.id]})
   div.appendChild(field)
   field.addEventListener('change', function(e){my.saveData(params.id, field.value)})
   // La description (if any)
@@ -171,6 +201,7 @@ buildInputText(params){
 
 }//PreferencesClass
 const Preferences = new PreferencesClass()
+const Pref = Preferences.data
 
 
 /**
