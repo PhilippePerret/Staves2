@@ -8,6 +8,7 @@ class UIClass {
     this.bntModePortees = document.querySelector('button#mode-portees')
     this.btnModeColor   = document.querySelector('button#mode-color')
     this.bntModeSelecti = document.querySelector('button#mode-selection')
+    this.btnModeMidi    = DGet('button#midi-on-off')
 
   }
 
@@ -37,11 +38,12 @@ class UIClass {
  */
 observeBoutonsModes(){
 
-  this.btnModeInsert.addEventListener('click', Current.changeModeInsert.bind(Current))
-  this.btnNoteDuree.addEventListener('click', Current.changeNoteDuree.bind(Current))
-  this.bntModePortees.addEventListener('click', Current.changeModePortees.bind(Current))
-  this.btnModeColor.addEventListener('click', Current.changeModeColor.bind(Current))
-  this.bntModeSelecti.addEventListener('click', Current.changeModeSelecti.bind(Current))
+  listen(this.btnModeInsert, 'click', Current.changeModeInsert.bind(Current))
+  listen(this.btnNoteDuree, 'click', Current.changeNoteDuree.bind(Current))
+  listen(this.bntModePortees, 'click', Current.changeModePortees.bind(Current))
+  listen(this.btnModeColor, 'click', Current.changeModeColor.bind(Current))
+  listen(this.bntModeSelecti,'click', Current.changeModeSelecti.bind(Current))
+  listen(this.btnModeMidi, 'click', Current.changeModeMidi.bind(Current))
 }
 
 }//class UIClass

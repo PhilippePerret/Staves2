@@ -4,6 +4,15 @@
  * --------------
  * Pour l'affichage des messages à l'écran
  * 
+ * version 1.3.0
+ * 
+ 
+ # 1.3.0
+    Ajout du paramètre :flash pour un texte court. Par exemple :
+    flash:3 pour un message affiché 3 secondes.
+ 
+ *  
+ * 
  * 
  *    message(str)      Une simple note
  *    erreur(str)       Un message d'erreur
@@ -12,18 +21,18 @@
  */
 
 
-function message(str){
-  Message.showMessage.call(Message, str)
+function message(str, params){
+  Message.showMessage.call(Message, str, params)
   return true
 }
-function error(err){
-  Message.showError.call(Message, err)
+function error(err, params){
+  Message.showError.call(Message, err, params)
   return false
 }
-function erreur(err){return error(err)}
+function erreur(err, params){return error(err, params)}
 
-function action(str){
-  Message.showAction.call(Message, str)
+function action(str, params){
+  Message.showAction.call(Message, str, params)
 }
 
 class MessageClass {
@@ -33,21 +42,24 @@ class MessageClass {
     listen(this.panneauMessage, 'click', this.hideMessage.bind(this))
   }
 
-  showMessage(msg){ this.showText(msg, 'notice') }
-  showError(err){   this.showText(err, 'error') }
-  showAction(msg){  this.showText(msg, 'doaction') }
+  showMessage(msg, params){ this.showText(msg, 'notice', params) }
+  showError(err, params){   this.showText(err, 'error', params) }
+  showAction(msg, params){  this.showText(msg, 'doaction', params) }
 
-  showText(str,type){
+  showText(str,type, params){
     this.clearTimerMessage()
     this.divContent.innerHTML = str
     this.panneauMessage.className = type
     this.panneauMessage.classList.remove('hidden')
-    if ( type !== 'error') this.msgTimer = setTimeout(this.hideMessage.bind(this),20*1000)
+    if ( type !== 'error'){ 
+      var duree = 20*1000
+      if ( params && params.flash ) duree = params.flash * 1000
+      this.msgTimer = setTimeout(this.hideMessage.bind(this),duree)
+    }
   }
 
   hideMessage(){
-    this.panneauMessage.innerHTML = ""
-    this.panneauMessage.classList.add('hidden')
+    this.panneauMessage.classList.add('vanish')
     this.clearTimerMessage()
   }
   clearTimerMessage(){

@@ -43,6 +43,7 @@ class CurrentClass {
   get isModePhrase(){return !!this._mode_insert_phrase}
 
 get modePortees(){return this._mode_portees || 0}
+get modeMidiOn(){ return this._mode_midi_on == true }
 
 /**
  * Pour définir les valeurs au chargement de l'application
@@ -55,6 +56,7 @@ setPreferences(){
   this.setNoteDuree()
   this._index_color = Number(Pref['index_color'])
   this.setModeColor()
+  this._mode_midi_on = true
 }
 
 /**
@@ -106,6 +108,12 @@ setModeColor(){
   this._color = COLORS[this._index_color]
   UI.btnModeColor.innerHTML = this._color
   return this._color
+}
+
+changeModeMidi(){
+  this._mode_midi_on = !this._mode_midi_on
+  UI.btnModeMidi.innerHTML = this._mode_midi_on ? 'MIDI ON' : 'MIDI OFF'
+  message(this._mode_midi_on ? "Les notes MIDI s'écrivent" : "Je n'écris plus les notes MIDI", {flash:true})
 }
 
 setModePortees(){
