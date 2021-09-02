@@ -8,3 +8,5 @@
 
 
 * Panneau avec tous les raccourcis (c'est Manuel.js qui s'en charge, rien n'est à faire, normalement, que modifier Manuel.js dans Table d'analyse et le reporter ici.)
+
+* Voir si Staves est pilotable par MIDI
