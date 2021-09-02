@@ -1,8 +1,6 @@
 # TODO Remontée
 
-* Touche "MIDI ON/OFF" pour pouvoir jouer les notes sur le clavier sans les écrire
 * Option pour jouer le son de la note cliqué (encerclée)
-
 
 # TODO liste
 

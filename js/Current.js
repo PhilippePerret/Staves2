@@ -34,6 +34,11 @@ class CurrentClass {
     this.visualizeNextSnap()
   }
 
+  resetCursor(){
+    this._nextsnap = null
+    this.nextSnap = this.nextSnap
+  }
+
   // Couleur courante (pour le cercle autour de la note pour le moment)
   get color(){return this._color }
 
@@ -113,22 +118,22 @@ setModeColor(){
 changeModeMidi(){
   this._mode_midi_on = !this._mode_midi_on
   UI.btnModeMidi.innerHTML = this._mode_midi_on ? 'MIDI ON' : 'MIDI OFF'
-  message(this._mode_midi_on ? "Les notes MIDI s'écrivent" : "Je n'écris plus les notes MIDI", {flash:true})
+  message(this._mode_midi_on ? "Les notes MIDI s'écrivent" : "Je n'écris plus les notes MIDI", {flash:3})
 }
 
 setModePortees(){
   UI.bntModePortees.innerHTML = ['solo','piano','duo'][this.modePortees]
-  page.portee1.setFond()
-  page.portee2.isVisible = this.modePortees != 0
+  Page.portee1.setFond()
+  Page.portee2.isVisible = this.modePortees != 0
   switch(this.modePortees){
     case 0:
-      page.portee2.unsetFond()
+      Page.portee2.unsetFond()
       break
     case 1:
-      page.portee2.setFond().setKeyTo(FA)
+      Page.portee2.setFond().setKeyTo(FA)
       break
     case 2:
-      page.portee2.setFond().setKeyTo(SOL)
+      Page.portee2.setFond().setKeyTo(SOL)
       break
   }
 }

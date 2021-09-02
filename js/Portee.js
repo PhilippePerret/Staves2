@@ -18,7 +18,7 @@ add(o){ this.obj.appendChild(o) }
  *    octave:   [Optionnel] L'octave (envoyé MIDI)
  */
 buildNote(params){
-  console.log("Params au départ : ", params)
+  // console.log("Params au départ : ", params)
   // On doit trouver l'octave en fonction de la note courante
   params.octave || Object.assign(params, {octave: this.findOctaveForNote(params.note)})
 
@@ -54,7 +54,7 @@ noteAlreadyExists(note){
   // console.log("Note à comparer :", note)
   var isFound = false
   for ( var n of this.notes ) {
-    console.log("Note comparée : ", n)
+    // console.log("Note comparée : ", n)
     if ( note.note != n.note ){ 
       // console.log("Note différente (%s/%s)", note.note, n.note)
       continue ;
@@ -86,7 +86,7 @@ noteAlreadyExists(note){
  */
 findOctaveForNote(note){
   var octave = 3
-  if ( Current.note && Preferences.data['cb-same-note-pitch'] ){
+  if ( Current.note && Pref['same_note_pitch'] ){
     var dnote = {portee:Current.note.portee, note:note}
     var candidats = [
         new Note(Object.assign(dnote, {octave:Current.note.octave - 1}))

@@ -141,7 +141,11 @@ window.onkeyup = function(e) {
       break
 
     case 'Backspace':
-      Notes.destroyCurrent()
+      if ( e.shiftKey ) {
+        Notes.destroyAll()
+      } else {
+        Notes.destroyCurrent()
+      }
       return stopEvent(e)
 
     case 'Home':

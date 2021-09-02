@@ -1,6 +1,6 @@
 'use strict'
 
-class Page {
+class PageClass {
 
   /**
    * Pour ajouter les portées (2)
@@ -11,7 +11,7 @@ class Page {
     Current.portee = this.portee1
     this.portee2 = this.addPortee()
     this.portee2.setTop(380)
-    page.portee2.isVisible = false
+    this.portee2.isVisible = false
     Current.setModePortees()
   }
   /**
@@ -41,4 +41,7 @@ get obj(){
   return this._obj || (this._obj = document.querySelector('#page'))
 }
 
-}
+} // PageClass
+
+const Page = new PageClass()
+

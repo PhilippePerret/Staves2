@@ -48,6 +48,21 @@ destroyCurrent(note){
 }
 
 /**
+ * Détruire toutes les notes
+ * 
+ * (et remet le curseur au départ)
+ */
+destroyAll(){
+  this.items.forEach(n => n.destroy())
+  this.items = []
+  Page.portee1.notes = []
+  Page.portee2.notes = []
+  this.resetPointer()
+  Current.resetCursor()
+  message("J'ai détruit toutes les notes.", {flash:2})
+}
+
+/**
  * Retirer la note courante
  * 
  */

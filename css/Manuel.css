@@ -9,7 +9,7 @@ section#manuel {
   top: 2em;
   left: calc(100%/2 - 430px);
   width: 860px;
-  max-height: 800px;
+  max-height: 460px;
   overflow: auto;
   background-color: #EFEFEF;
   color: #555; /* pas trop noir */
