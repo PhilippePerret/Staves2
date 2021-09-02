@@ -1,6 +1,8 @@
 # TODO Remontée
 
-* [BUG] Voir pourquoi la note se place trop à gauche
+* [BUG] Rendre impossible de mettre la même note au même endroit
+  (mais comment gérer, alors, le fait de mettre deux DO à l'octave, en voulant
+  mettre le deuxième à l'octave => aide ? "pour mettre deux notes à l'octave => mettre la première d'abord, car on ne peut pas mettre deux fois la même note" OU PLUTÔT: message quand on fait l'erreur)
 * Préférence pour respecter la hauteur de la note MIDI (sinon, elle sera placée en respectant la règle de la proximité de quarte)
 
 # TODO liste

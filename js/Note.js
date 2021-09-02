@@ -48,6 +48,7 @@ class Note {
 
 constructor(data){
   this.data       = data
+  this.id         = data.id // = index dans la liste des notes
   this.portee     = data.portee
   this.note       = data.note
   this.octave     = data.octave
@@ -166,22 +167,50 @@ get noteLeft(){
   var nl = this.left + NOTE_OFFSET
   // Y a-t-il une note à moins d'un demi-ton, sur le même octave et
   // le même left absolu ?
-  Notes.items.forEach( n => {
-    // console.log("la note : ", n)
-    // console.log("Math.abs(n.indexNote - this.indexNote) = ", Math.abs(n.indexNote - this.indexNote))
-    var idx = Number(this.indexNote);
-    this.note == 'c' && (idx += 1);
-    if ( this.left == n.left /* TODO : est-ce vraiment des valeurs "absolues" */) {
-      if ( idx - n.indexNote < 2 ) {
-        const meme_octave = n.octave == this.octave
-        const si_et_do_proches = n.note == 'b' && this.note == 'c' && this.octave == n.octave + 1
-        if ( meme_octave || si_et_do_proches ) {
-          nl += 78        
-        }
-      }
-    }
-  })
 
+  // Index 
+  const idx   = Number(this.indexNote);
+  const note  = this.note
+
+  for (var inote = 0,len = Notes.items.length; inote < len; ++inote){
+    let n = Notes.items[inote]
+    // console.log("Note comparée : ", n)
+
+    // Si c'est la même note, on passe
+    if ( this.id == n.id ) {
+      console.log("C'est la même note, je passe")
+      continue
+    }
+
+    // Si ce n'est pas le même left, on passe
+    if ( this.left != n.left ) {
+      console.log("Pas le même left (%s/%s), je passe", this.left, n.left)
+      continue
+    }
+
+    let si_et_do = n.note == 'b' && note == 'c'
+
+    var notes_proches = si_et_do || (idx - n.indexNote < 2)
+
+    // Si les notes ne sont pas proches, on les passe
+    if ( ! notes_proches ) {
+      console.log("Les notes ne sont pas contigues, je passe")
+      continue
+    }
+
+    // Si les notes ne sont pas sur le même octave, on les passe
+    var bon_octave = n.octave == this.octave || (si_et_do && this.octave == n.octave + 1)
+    if ( ! bon_octave ) {
+      console.log("Pas sur le bon octave, je passe")
+      continue
+    }
+
+    // Sinon, il faut faire la rectif et s'en aller
+    console.log("JE RECTIFIE !", this, n)
+    nl += 66
+    break
+
+  }
   return nl
 }
 /**

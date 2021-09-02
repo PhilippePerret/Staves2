@@ -27,11 +27,11 @@ buildNote(params){
   if ( Preferences.data['change_staff_on_c_median']){
     console.info("TODO On doit peut-être changer de portée")
   }
-  Object.assign(params, {portee: this})
+  this.notes || (this.notes = [])
+  Object.assign(params, {portee: this, id: this.notes.length})
   console.log("Données pour construire la note : ", params)
   var n = new Note(params)
   n.build() // l'ajoute à Notes.items
-  this.notes || (this.notes = [])
   this.notes.push(n)
   Current.note = n
 }
