@@ -1,5 +1,7 @@
 body {
   background-color: rgba(250,250,250,0.95);
+  font-family: 'Arial Narrow', Helvetica, Geneva, Arial;
+  font-size: 16pt;
 }
 * {
   user-select: none;
@@ -30,3 +32,33 @@ div#snap-visualisator {
   height: 240px;
   z-index: 4;
 }
+
+/* Les messages à l'écran */
+
+div#message {
+  position: fixed;
+  color: white;
+  left: calc(100%/2 - 200px);
+  width: 400px;
+  top: 8em;
+  padding: 1em 2em;
+  z-index: 1000;
+  cursor: pointer;
+}
+div#message.error {
+  background-color: red;
+}
+div#message.notice {
+  background-color: blue;
+}
+div#message.doaction {
+  background-color: orange;
+}
+div#message span.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 18pt;
+  color: #ffa2a2;  
+}
+

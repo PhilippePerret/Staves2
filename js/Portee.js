@@ -28,12 +28,55 @@ buildNote(params){
     console.info("TODO On doit peut-être changer de portée")
   }
   this.notes || (this.notes = [])
-  Object.assign(params, {portee: this, id: this.notes.length})
-  console.log("Données pour construire la note : ", params)
+  Object.assign(params, {portee: this, id: this.notes.length, left: Current.snap})
+  // console.log("Données pour construire la note : ", params)
   var n = new Note(params)
-  n.build() // l'ajoute à Notes.items
-  this.notes.push(n)
-  Current.note = n
+  if ( this.noteAlreadyExists(n) ) {
+    //
+    // La note existe déjà
+    //
+    erreur(ERRORS['note_already_exists'])
+  } else {
+    //
+    // Si la note n'existe pas, on peut la construire
+    //
+    n.build() // l'ajoute à Notes.items
+    this.notes.push(n)
+    Current.note = n
+  }
+}
+
+/**
+ * Retourne TRUE si la note +note+ {Note} existe déjà
+ * 
+ */
+noteAlreadyExists(note){
+  // console.log("Note à comparer :", note)
+  var isFound = false
+  for ( var n of this.notes ) {
+    console.log("Note comparée : ", n)
+    if ( note.note != n.note ){ 
+      // console.log("Note différente (%s/%s)", note.note, n.note)
+      continue ;
+    }
+    if ( note.left != n.left ){
+      // console.log("Left différent (%s/%s)", note.left, n.left)
+      continue ;
+    }
+    if ( note.octave != n.octave ) {
+      // console.log("Octave différente (%s/%s)", note.octave, n.octave)
+      continue ;
+    }
+    if ( note.alteration != n.alteration ){ 
+      // console.log("Altération différente (%s/%s)", note.alteration, n.alteration)
+      continue ;
+    }
+    // On l'a trouvée
+    // console.log("TROUVÉE !")
+    isFound = true
+    break
+  }
+  return isFound
 }
 
 /**

@@ -14,7 +14,10 @@ const PreferencesAppData = [
   , {type:'pressoir',   id:'note_duree_is_ronde', label:"Note par défaut", values:["Ronde", "Noire"], description: "Détermine le style de note qui apparaitra."}
   , {type:'pressoir',   id:'index_color', default: 1, label:"Couleur de l'anneau par défaut", values:COLORS.map(c => {c = c.split('');c[0]=c[0].toUpperCase();return c.join('')}), description: "Définit la couleur par défaut de l'anneau autour d'une note mise en exergue. On peut aussi la modifier avec la touche « k »."}
   , {type:'inputtext',  id:'snap_width', default:200, label:"Snap entre les notes (en pixels)", description:"La distance conseillée est 200 pixels. Penser à tenir compte du fait qu'il peut y avoir des altérations (essayer toujours avec le double_bémol)."}
+  , {type:'checkbox',   id:'keep_octave_midi', default: false, label:"Garder l'octave des notes MIDI", description:"Dans le cas contraire, la note sera placée à l'octave normale ou en respectant la <em>proximité de quarte</em> si elle est choisie."}
 ]
 
 const Pref = Preferences.data
+Pref.keep_octave_midi = Number(Pref['keep_octave_midi']) == '1'
+
 

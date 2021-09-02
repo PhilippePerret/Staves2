@@ -53,6 +53,8 @@ constructor(data){
   this.note       = data.note
   this.octave     = data.octave
   this.alteration = data.alteration || data.alt
+  this.left       = data.left
+  
   /**
    * WARNING
    * -------
@@ -164,6 +166,10 @@ unsetSelected() {this.obj.classList.remove('selected')}
  * Fonction du fait que la note précédente est à moins d'un demi-ton
  */
 get noteLeft(){
+  return this._noteleft || (this._noteleft = this.calcNoteLeft())
+}
+// Calcule le left de la note en fonction des notes environnantes
+calcNoteLeft(){
   var nl = this.left + NOTE_OFFSET
   // Y a-t-il une note à moins d'un demi-ton, sur le même octave et
   // le même left absolu ?
@@ -178,41 +184,41 @@ get noteLeft(){
 
     // Si c'est la même note, on passe
     if ( this.id == n.id ) {
-      console.log("C'est la même note, je passe")
+      // console.log("C'est la même note, je passe")
       continue
     }
 
     // Si ce n'est pas le même left, on passe
     if ( this.left != n.left ) {
-      console.log("Pas le même left (%s/%s), je passe", this.left, n.left)
+      // console.log("Pas le même left (%s/%s), je passe", this.left, n.left)
       continue
     }
 
     let si_et_do = n.note == 'b' && note == 'c'
-
     var notes_proches = si_et_do || (idx - n.indexNote < 2)
 
     // Si les notes ne sont pas proches, on les passe
     if ( ! notes_proches ) {
-      console.log("Les notes ne sont pas contigues, je passe")
+      // console.log("Les notes ne sont pas contigues, je passe")
       continue
     }
 
     // Si les notes ne sont pas sur le même octave, on les passe
     var bon_octave = n.octave == this.octave || (si_et_do && this.octave == n.octave + 1)
     if ( ! bon_octave ) {
-      console.log("Pas sur le bon octave, je passe")
+      // console.log("Pas sur le bon octave, je passe")
       continue
     }
 
     // Sinon, il faut faire la rectif et s'en aller
-    console.log("JE RECTIFIE !", this, n)
+    // console.log("JE RECTIFIE !", this, n)
     nl += 66
     break
 
   }
   return nl
 }
+
 /**
  * Le left des notes supplémentaires, en fonction du fait qu'il y a
  * ou non des altérations

@@ -146,20 +146,3 @@ function loadJSModule(moduleName){
     script.addEventListener('load', ok)
   })
 }
-
-/**
- * Pour pouvoir recevoir des messages de la part de Staves (et
- * notamment pouvoir repasser à la table)
- *
- */
-window.addEventListener("message", onMessage, false);
-function onMessage(e){
-  const data = e.data
-  switch(data.operation){
-    case 'activate':
-      document.body.click()
-      document.body.querySelector('section#page').focus()
-      document.body.querySelector('section#page').click()
-      break
-  }
-}
