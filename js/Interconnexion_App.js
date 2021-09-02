@@ -8,6 +8,7 @@ class InterconnexionClass {
   send(data){
     this.intercon.send(data) 
   }
+  
   receive(data){
     switch(data.operation){
       case 'NOTE':

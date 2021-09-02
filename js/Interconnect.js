@@ -42,8 +42,9 @@ class Interconnexion {
    */
   static onMessage(e){
     const data = e.data
-    const interconnexion = this.items[data.name]
-    interconnexion.receive(data)
+    // console.log("Interconnexion.items['%s'] : ", data.name, this.items)
+    // console.log("this.items[data.name] = ", this.items[data.name], typeof(this.items[data.name]))
+    this.items[data.name].receive(data)
   }
 
   static add(conn){
@@ -63,6 +64,7 @@ class Interconnexion {
    */
   send(data){
     Object.assign(data, {name:this.name})
+    // console.log("data dans send (avec name à '%s'): ", this.name, data)
     this.other.postMessage(data,'*')
   }
 

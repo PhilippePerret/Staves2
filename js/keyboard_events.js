@@ -89,10 +89,7 @@ window.onkeypress = function(e) {
        * ce raccourci permet de repasser à la table d'harmonie
        * 
        */
-      window.parent.postMessage({
-        'operation': 'activateTableAnalyse',
-        'message': 'Je reviens sur la table d’analyse.'
-      }, "*");
+      Duplex.send({operation: 'activateTableAnalyse'})
       break
 
     case 'u': case '=': // Plus et "o"
