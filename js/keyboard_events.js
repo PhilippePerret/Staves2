@@ -2,6 +2,10 @@
 window.onkeypress = function(e) {
   switch(e.key){
 
+    case 'Enter':
+      Pref.play_note_clicked && Current.note && Current.note.play()
+      break
+
     case 'c': case 'd': case 'e': case 'f': case 'g': case 'a': case 'b' :
       Current.portee.buildNote({note: e.key})
       Current.changeModeSelecti(null, false) // on fait toujours ré-apparaitre les marques

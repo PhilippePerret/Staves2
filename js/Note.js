@@ -248,7 +248,41 @@ build(){
  * Observe la note
  */
 observe(){
-  this.obj.addEventListener('click', this.drawAnneau.bind(this))
+  listen(this.obj, 'click', this.onClickNote.bind(this))
+}
+
+onClickNote(){
+  Pref.no_anneau_note_clicked || this.drawAnneau()
+  Pref.play_note_clicked && this.play()
+}
+
+play(){
+  console.log("Je dois jouer cette note", this)
+  var n = this.note.toUpperCase()
+  var o = this.octave
+  if (this.alteration) {
+    switch(this.alteration){
+      case 'diese':
+        if ( ['B','E'].includes(n)){
+          n = {'B':'C','E':'F'}[n]
+          n == 'C' && (o += 1)
+        } else {
+          n += '#'
+        }
+        break
+      case 'bemol':
+        n = {'C':'B','D':'C#','E':'D#','F':'E','G':'F#','A':'G#','B':'A#'}[n]
+        n == 'B' && (o -= 1)
+        break
+      case 'double-diese':
+        n = {'C':'D','D':'E','E':'F#','F':'G','G':'A','A':'B','B':'C#'}[n]
+        break
+      case 'double-bemol':
+        n = {'C':'A#','D':'C','E':'D','F':'D#','G':'F','A':'G','B':'A'}[n]
+        break
+    }
+  }
+  Duplex.send({operation:'PLAY', note:{note:n, octave: o - 2 }})
 }
 
 /**

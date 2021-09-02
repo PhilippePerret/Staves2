@@ -5,6 +5,8 @@
  * 
  */
 
+const Ouvrir_preferences = "Ouvrir les préférences (⇧P),"
+
 const ManuelData = [
   {
       operation: "Ajouter une note sur la portée"
@@ -23,9 +25,20 @@ const ManuelData = [
   }
 , {
       operation: "Écrire les notes MIDI en conservant leur octave"
-    , procedure: ["Ouvrir les préférences (⇧P),", "Cocher la case “Garder l'octave des notes MIDI”."]
+    , procedure: [Ouvrir_preferences, "Cocher la case “Garder l'octave des notes MIDI”."]
     , precision: "Si ce mode est désactivé, la note se place à l'octave normale, ou l'octave qui respecte le principe de proximité de quarte."
   }
+, {
+      operation: "Jouer le son de la note cliquée"
+    , procedure: [Ouvrir_preferences, "cocher la case “Jouer la note cliquée”."]
+    , precision: "Pour ne pas l'entourer, cocher la case “Ne pas entourer la note cliquée”."
+  }
+, {
+      operation: "Pour ne pas entourer la note cliquée"
+    , procedure: [Ouvrir_preferences, "cocher la case “Ne pas entourer la note cliquée”."]
+    , precision: "Pour émettre le son de la note, cocher la case “Jouer la note cliquée”"
+  }
+
 ]
 
 const ManuelShortcutsData = [
