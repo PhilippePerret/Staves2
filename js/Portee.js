@@ -18,15 +18,18 @@ add(o){ this.obj.appendChild(o) }
  *    octave:   [Optionnel] L'octave (envoyé MIDI)
  */
 buildNote(params){
+  console.log("Params au départ : ", params)
   // On doit trouver l'octave en fonction de la note courante
-  var octave = params.octave || this.findOctaveForNote(params.note);
+  params.octave || Object.assign(params, {octave: this.findOctaveForNote(params.note)})
 
    // On doit trouver la portée en fonction de la note et des préfé-
   // rences
-  if ( Preferences.data['cb-change-staff-on-c-median']){
+  if ( Preferences.data['change_staff_on_c_median']){
     console.info("TODO On doit peut-être changer de portée")
   }
-  var n = new Note({portee: this, note: params.note, octave: octave})
+  Object.assign(params, {portee: this})
+  console.log("Données pour construire la note : ", params)
+  var n = new Note(params)
   n.build() // l'ajoute à Notes.items
   this.notes || (this.notes = [])
   this.notes.push(n)

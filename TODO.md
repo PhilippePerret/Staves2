@@ -1,8 +1,7 @@
 # TODO Remontée
 
-* Modifier les préférences pour qu'elles ressemblent à celle de la
-  table d'analyse
-* Calculer la vraie note (class Note) en fonction de la tonalité définie
+* [BUG] Voir pourquoi la note se place trop à gauche
+* Préférence pour respecter la hauteur de la note MIDI (sinon, elle sera placée en respectant la règle de la proximité de quarte)
 
 # TODO liste
 

@@ -13,13 +13,9 @@ class InterconnexionClass {
       case 'NOTE':
         // console.log("Note MIDI : ", data.note)
         var note = data.note.name
-        if ( note.match(/#/) ) {
-          data = Note.dataNoteInTune(note)
-          Object.assign(data, {octave: null})
-        } else {
-          data = {note:note, octave:null, alteration:null}
-        }
-        Current.portee.buildNote({note:data.note.name.toLowerCase(), alteration:'', octave:null})
+        data = Note.dataNoteInTune(note)
+        Object.assign(data, {octave:null})
+        Current.portee.buildNote(data)
         break
       case 'ACTIVATE':
         console.log("Je dois activer Staves")

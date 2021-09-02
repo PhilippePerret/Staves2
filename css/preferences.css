@@ -4,7 +4,7 @@
 
 section#preferences-panel {
   position: fixed;
-  top: 5em;
+  top: 1em;
   left: 12em;
   background-color: #EFEFEF;
   font-family:  'Arial Narrow';
@@ -12,6 +12,8 @@ section#preferences-panel {
   padding: 1em 4em 3em;
   border: 1px solid;
   border-radius: 1em;
+  max-height: 400px;
+  overflow: auto;
   z-index: 4000;
 }
 section#preferences-panel div#tip-close {

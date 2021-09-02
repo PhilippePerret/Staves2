@@ -33,7 +33,17 @@ class Note {
    * @return {:note, :alteration}
    */
   static dataNoteInTune(note){
-    
+    const tune = Pref['tune']
+    var dnote = ALTERATIONS_PER_TUNE[tune][note]
+    if ( dnote ) {
+      if (dnote.alt == 'b') dnote.alt = 'bemol'
+      else if (dnote.alt == '#') dnote.alt = 'diese'
+    } else {
+      var snote = note.split('')
+      dnote = {note: snote[0].toLowerCase()}
+      if ( snote[1] == '#' ) { Object.assign(dnote, {alt: 'diese'}) }
+    }
+    return dnote
   }
 
 constructor(data){
@@ -41,7 +51,7 @@ constructor(data){
   this.portee     = data.portee
   this.note       = data.note
   this.octave     = data.octave
-  this.alteration = data.alteration
+  this.alteration = data.alteration || data.alt
   /**
    * WARNING
    * -------
@@ -157,8 +167,8 @@ get noteLeft(){
   // Y a-t-il une note à moins d'un demi-ton, sur le même octave et
   // le même left absolu ?
   Notes.items.forEach( n => {
-    console.log("la note : ", n)
-    console.log("Math.abs(n.indexNote - this.indexNote) = ", Math.abs(n.indexNote - this.indexNote))
+    // console.log("la note : ", n)
+    // console.log("Math.abs(n.indexNote - this.indexNote) = ", Math.abs(n.indexNote - this.indexNote))
     var idx = Number(this.indexNote);
     this.note == 'c' && (idx += 1);
     if ( this.left == n.left /* TODO : est-ce vraiment des valeurs "absolues" */) {
@@ -387,3 +397,9 @@ get isRonde(){ return this.type == 'ronde' }
 
 } // Classe Note
 
+
+const ALTERATIONS_PER_TUNE = {
+  'Cm': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+}

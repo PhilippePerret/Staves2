@@ -1,37 +1,26 @@
 'use strict';
 /*
-  Version 1.0.1
+
+  Version 1.2.1
+  -------------
+
+# 1.2.1
+  Suppression de l'utilisation de Record (pour enregistrer le 
+  changement de préférences)
+
+# 1.2.0
+  Mise des valeurs par défaut dans les données des préférences de
+  l'application, ce qui semble tout de même le plus logique.
+
+# 1.1.0
+  Isolation complète du module, avec la méthode de définition des
+  valeur par défaut dans le module propre à l'application.
 */
 
 class PreferencesClass {
 
-  /**
-   * === PRÉFÉRENCES DE L'APPLICATION ===
-   * 
-   * Note : permet aussi de régler les valeurs par défaut
-   * 
-   */
-
-/**
- * Applique les valeurs par défaut si elles ne sont pas définies
- */
-defaultizeData(){
-  this.setIfUndefined('marque_accords_size', 30)
-  this.setIfUndefined('distance_systemes', 50)
-  this.setIfUndefined('top_first_system', 50)
-
-}
-/**
- * ==== MÉTHODES PROPRES ====
- * 
- */
-
 init(){
   this.data // pour l'instancier
-}
-
-setIfUndefined(key, value){
-  if ( 'undefined' == typeof this.data[key] ) Object.assign(this.data, {[key]: value})
 }
 
 toggle(){
@@ -67,9 +56,11 @@ build(){
   const DA = this.data
 
   if ( 'undefined' == typeof PreferencesAppData) {
-    alert("Il faut définir la constant 'PreferencesAppData' définissant les données de préférences")
+    erreur("Il faut définir la constant 'PreferencesAppData' définissant les données de préférences")
   } else {
+    this.defaultData = {} // pour mettre les valeurs par défaut
     PreferencesAppData.forEach( dp => {
+      Object.assign(this.defaultData, {[dp.id]: dp.default})
       if ( dp.type == 'inputtext'){
         o.appendChild(this.buildInputText(dp))
       } else if ( dp.type == 'checkbox' ) {
@@ -81,7 +72,6 @@ build(){
   }
 
   document.body.appendChild(o)
-
 
   this.obj = o
   this.observe()
@@ -95,7 +85,6 @@ saveData(key, val){
   if ( 'function' == typeof val ) val = val.call()
   this.data[key] = val
   localStorage.setItem(key, val)
-  Record.ON && Record.preference(key, val)
 }
 
 getData(){
@@ -108,10 +97,19 @@ getData(){
     Object.assign(data, {[key]: val})
   }
   // console.log("Data préférences :", data)
-  this._data = data
-  this.defaultizeData()
-  window.Pref = data // pour pouvoir faire Pref[key]
+  this._data = this.defaultize(data)
   return this._data
+}
+
+/**
+ * On met les valeurs pas défaut aux valeurs non définies
+ * 
+ */
+defaultize(data){
+  PreferencesAppData.forEach(dp => {
+    if (undefined == data[dp.id]) Object.assign(data, {[dp.id]: dp.default})
+  })
+  return data
 }
 
 /**
@@ -201,8 +199,11 @@ buildInputText(params){
 
 }//PreferencesClass
 const Preferences = new PreferencesClass()
-const Pref = Preferences.data
-
+// Si on veut utiliser 'Pref[<key>]' on peut ajouter à la fin de
+// Preferences_AppData.js :
+//    const Pref = Preferences.data
+// Note : ne pas le mettre ici, car le fichier Preferences_AppData.js
+// n'est pas encore chargé et ça plantera.
 
 /**
  * Méthodes DOM utiles

@@ -1,5 +1,12 @@
 'use strict';
 
+function listen(objet, eventType, method){
+  objet.addEventListener(eventType, method)
+}
+function unlisten(objet, eventType, method){
+  objet.removeEventListener(eventType, method)
+}
+
 /**
   Reçoit une définition des propriétés, par exemple :
   [

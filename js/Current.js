@@ -28,7 +28,7 @@ class CurrentClass {
     this._snap = this.nextSnap
     return this.nextSnap
   }
-  get nextSnap(){return this._nextsnap || (this._nextsnap = Preferences.snap_width) }
+  get nextSnap(){return this._nextsnap || (this._nextsnap = Pref['snap_width']) }
   set nextSnap(v){
     this._nextsnap = v
     this.visualizeNextSnap()
@@ -49,11 +49,11 @@ get modePortees(){return this._mode_portees || 0}
  * 
  */
 setPreferences(){
-  this._mode_insert_phrase  = Number(Preferences.data['pref-mode_insert_phrase'] || 0)
+  this._mode_insert_phrase  = Number(Pref['mode_insert_phrase'])
   this.setModeInsert()
-  this._note_duree_is_ronde = Number(Preferences.data['pref-note_duree_is_ronde'] || 0)
+  this._note_duree_is_ronde = Number(Pref['note_duree_is_ronde'])
   this.setNoteDuree()
-  this._index_color = Number(Preferences.data['pref-index_color'])
+  this._index_color = Number(Pref['index_color'])
   this.setModeColor()
 }
 
