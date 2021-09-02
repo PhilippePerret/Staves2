@@ -1,10 +1,5 @@
 # TODO Remontée
 
-* [BUG] Je n'arrive plus à déplacer la note avec MAJ-FLÈCHE D/G
-* Documenter : pour jouer la note sélectionner, on joue ENTER
-  => pour jouer une note, on la sélectionne et on joue ENTER
-  ou on clique dessus
-  NB : il faut que les préférences soient bien réglées.
 
 # TODO liste
 

@@ -30,13 +30,18 @@ const ManuelData = [
   }
 , {
       operation: "Jouer le son de la note cliquée"
-    , procedure: [Ouvrir_preferences, "cocher la case “Jouer la note cliquée”."]
+    , procedure: [Ouvrir_preferences, "cocher la case “Jouer la note sélectionnée ou cliquée”."]
     , precision: "Pour ne pas l'entourer, cocher la case “Ne pas entourer la note cliquée”."
+  }
+, {
+      operation: "Jouer la note sélectionnée"
+    , procedure: ["Sélectionner la note avec les flèches", "jouer la touche ENTRÉE."]
+    , precision: "Pour que ça fonctionne, il faut que la case “Jouer la note sélectionnée ou cliquée” soit cochée."
   }
 , {
       operation: "Pour ne pas entourer la note cliquée"
     , procedure: [Ouvrir_preferences, "cocher la case “Ne pas entourer la note cliquée”."]
-    , precision: "Pour émettre le son de la note, cocher la case “Jouer la note cliquée”"
+    , precision: "Pour émettre le son de la note, cocher la case “Jouer la note sélectionnée ou cliquée”"
   }
 
 ]
