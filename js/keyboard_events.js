@@ -90,7 +90,7 @@ window.onkeypress = function(e) {
        //Current.changeModeSelecti.call(Current)
        break
 
-    case 'T':
+    case 'S': case 'T':
       /**
        * Lorsque Staves est "incrusté" dans la table d'analyse,
        * ce raccourci permet de repasser à la table d'harmonie

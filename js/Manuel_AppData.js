@@ -50,7 +50,7 @@ const ManuelShortcutsData = [
 
   {
       operation: 'Repasser à la table d’analyse'
-    , shortcut:  '⇧T'
+    , shortcut:  '⇧T ou ⇧S'
     , precision: "Seulement lorsque Staves est “incrustée” dans la table d'analyse."
   }
 
