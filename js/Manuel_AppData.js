@@ -47,9 +47,36 @@ const ManuelData = [
 ]
 
 const ManuelShortcutsData = [
+
   {
       operation: 'Repasser à la table d’analyse'
     , shortcut:  '⇧T'
     , precision: "Seulement lorsque Staves est “incrustée” dans la table d'analyse."
+  }
+
+, {
+      operation: 'Bascule mode Phrase / mode Accord'
+    , shortcut: 'm'
+    , precision: "“M” comme “Mode”"
+  }
+, {
+      operation: 'Bascule Noire / Ronde'
+    , shortcut: 'n'
+    , precision: "“N” comme “Note”. Juste pour un affichage différent"
+  }
+, {
+      operation: 'Bascule portée unique / duo / piano'
+    , shortcut: 'p'
+    , precision: '“P” comme “Portée”.'
+  }
+, {
+      operation: "Bascule entre les différentes couleurs"
+    , shortcut: 'k'
+    , precision: "“K” comme “Kouleur” (sic). Cette couleur affecte l'anneau autour de la note"
+  }
+, {
+      operation: "Bascule entre MIDI ON et MIDI OFF"
+    , shortcut: '⌥m'
+    , precision: "“M” comme MIDI bien sûr. Rappel : permet de jouer les notes sans qu'elles soient marquées."
   }
 ]
