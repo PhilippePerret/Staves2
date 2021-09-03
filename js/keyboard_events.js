@@ -46,6 +46,13 @@ window.onkeypress = function(e) {
       Current.changeModeInsert.call(Current)
       break
 
+    case 'µ': // ALT m
+      /**
+       * Bascule MIDI ON/OFF
+       */
+      Current.changeModeMidi.call(Current)
+      break
+
     case 'M':
       Manuel.toggle.call(Manuel);break
 
@@ -106,18 +113,23 @@ window.onkeypress = function(e) {
 }
 window.onkeydown = function(e) {
   // console.info("KEY-DOWN e.key",e.key )
+  switch(e.key){
+    
+    case 'ArrowDown': case 'ArrowUp':
+      return stopEvent(e)
 
+  }
 }
 window.onkeyup = function(e) {
   switch(e.key){
     
     case 'ArrowDown':
       Current.note && Current.note.down(e)
-      break
+      return stopEvent(e)
     
     case 'ArrowUp':
       Current.note && Current.note.up(e)
-      break
+      return stopEvent(e)
 
     case 'ArrowLeft': case 'j':
       if ( e.altKey /* pour "j" cf. plus haut, à "J" */) {

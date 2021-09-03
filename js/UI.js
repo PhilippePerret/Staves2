@@ -3,11 +3,11 @@
 class UIClass {
 
   defineElements(){
-    this.btnModeInsert  = document.querySelector('button#note-insert-mode')
-    this.btnNoteDuree   = document.querySelector('button#note-duree')
-    this.bntModePortees = document.querySelector('button#mode-portees')
-    this.btnModeColor   = document.querySelector('button#mode-color')
-    this.bntModeSelecti = document.querySelector('button#mode-selection')
+    this.btnModeInsert  = DGet('button#note-insert-mode')
+    this.btnNoteDuree   = DGet('button#note-duree')
+    this.bntModePortees = DGet('button#mode-portees')
+    this.btnModeColor   = DGet('button#mode-color')
+    this.bntModeSelecti = DGet('button#mode-selection')
     this.btnModeMidi    = DGet('button#midi-on-off')
 
   }

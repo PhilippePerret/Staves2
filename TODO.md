@@ -1,5 +1,9 @@
 # TODO Remontée
 
+* Essayer les "raccourcis doubles" (gérés par onkeydown)
+
+* [BUG] Voir le problème avec les couleurs
+* [BUG] Je ne peux plus déplacer les notes avec MAJ FLÈCHE
 
 # TODO liste
 
