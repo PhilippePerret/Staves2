@@ -320,6 +320,7 @@ destroy(){
   this.obj.remove()
   this.removeLignesSup()
   this.removeAlteration()
+  this.portee.removeNote(this)
 }
 
 /**
@@ -468,7 +469,10 @@ get isRonde(){ return this.type == 'ronde' }
 
 
 const ALTERATIONS_PER_TUNE = {
-  'Cm': {
+  'C': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'e',alt:'b'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'Cm': {
     'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
   }
 }

@@ -11,6 +11,21 @@ class Portee {
 add(o){ this.obj.appendChild(o) }
 
 /**
+ * Pour détruire une note sur la portée
+ * (en fait, ici, on ne fait que la retirer de la liste des notes
+ *  de la portée et il faut s'en tenir à ça)
+ */
+removeNote(note){
+  var newNotes = []
+  for ( var n of this.notes ) {
+    if ( n == note ) continue ;
+    newNotes.push(n)
+  }
+  this.notes = newNotes
+  newNotes = null
+}
+
+/**
  * Pour construire une note dans la portée
  * 
  * +params+
@@ -55,6 +70,10 @@ noteAlreadyExists(note){
   var isFound = false
   for ( var n of this.notes ) {
     // console.log("Note comparée : ", n)
+    //
+    // +note+ est la note qu'on veut ajouter
+    // +n+    est la note existante (dans this.notes)
+    //
     if ( note.note != n.note ){ 
       // console.log("Note différente (%s/%s)", note.note, n.note)
       continue ;
