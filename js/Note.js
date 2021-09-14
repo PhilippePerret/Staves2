@@ -475,4 +475,76 @@ const ALTERATIONS_PER_TUNE = {
 , 'Cm': {
     'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
   }
+, 'C#': {
+    'C':{note:'b',alt:'#'}, 'F':{note:'e',alt:'#'}, 'G':{note:'f',alt:'x'}
+  }
+, 'C#m': {
+    'C':{note:'b',alt:'#'}, 'F':{note:'e',alt:'#'}, 'G':{note:'f',alt:'x'}
+  }
+, 'D': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'Dm': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'e',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'D#': {
+    'D':{note:'c',alt:'x'}, 'F':{note:'e',alt:'#'}, 'G':{note:'f',alt:'x'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'D#m': {
+    'D':{note:'c',alt:'x'}, 'F':{note:'e',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'Eb': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'F#':{note:'g',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'Ebm': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'F#':{note:'g',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'E': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'Em': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'F': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'F#':{note:'g',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'Fm': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'F#':{note:'g',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'F#': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F':{note:'e',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G':{note:'f',alt:'x'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'F#m': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F':{note:'e',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G':{note:'f',alt:'x'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'G': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'Gm': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'F#':{note:'f',alt:'#'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'G#': {
+    'C':{note:'b',alt:'#'}, 'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F':{note:'e',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G':{note:'f',alt:'x'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'G#m': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F':{note:'e',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G':{note:'f',alt:'x'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'A': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'Am': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'e',alt:'b'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'Bb': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'F#':{note:'g',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'Bbm': {
+    'C#':{note:'d',alt:'b'}, 'D#':{note:'e',alt:'b'}, 'F#':{note:'g',alt:'b'}, 'G#':{note:'a',alt:'b'}, 'A#':{note:'b',alt:'b'}
+  }
+, 'B': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
+, 'Bm': {
+    'C#':{note:'c',alt:'#'}, 'D#':{note:'d',alt:'#'}, 'F#':{note:'f',alt:'#'}, 'G#':{note:'g',alt:'#'}, 'A#':{note:'a',alt:'#'}
+  }
 }

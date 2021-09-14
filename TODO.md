@@ -1,3 +1,5 @@
+* Mettre une durée minimale pour les notes
+
 # TODO Remontée
 
 * Essayer les "raccourcis doubles" (gérés par onkeydown)
